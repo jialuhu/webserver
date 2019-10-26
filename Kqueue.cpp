@@ -81,6 +81,7 @@ void Kqueue::updateChannel(Channel* channel) {
         assert(channels_.find(kfd) == channels_.end());
         //该事件还未出现在事件注册表中,如新建立的链接
         //对该事件进行注册
+        //std::cout << "Register kfd\n";
         assert(Register(channel,kfd)==true);
     }
         //更新事件表
