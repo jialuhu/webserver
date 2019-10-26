@@ -36,4 +36,9 @@ int SocketOpt::setnonblocking(int fd) {
     return old_option;
 }
 
-
+void SocketOpt :: socketpair(int wakeup[]){
+    //int wakeupfd[2];
+    int ret = ::socketpair(AF_UNIX,SOCK_STREAM,0,wakeup);
+    assert(ret!=-1);
+    //return wakeup;
+}
