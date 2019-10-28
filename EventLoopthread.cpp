@@ -3,7 +3,7 @@
 //
 #include "EventLoopthread.h"
 #include "EventLoop.h"
-/*EventLoopthread::EventLoopthread():
+EventLoopthread::EventLoopthread():
         loop_(nullptr),
         thread_([this]{this->threadFunc();})
 {
@@ -36,8 +36,8 @@ void EventLoopthread ::threadFunc() {
     std::cout << "thread_loop\n";
     //****sleep(5);
     thread_loop.loop();
-}*/
-EventLoopthread::EventLoopthread()
+}
+/*EventLoopthread::EventLoopthread()
         : _loop(nullptr),
         //exiting_(false),
           _thread([this]{ this->threadFunc(); })
@@ -80,4 +80,4 @@ void EventLoopthread::threadFunc()
         _condVar.notify_one();
     }
     loop.loop();
-}
+}*/

@@ -8,7 +8,7 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
-/*class EventLoop;
+class EventLoop;
 class EventLoopthread{
 public:
     EventLoopthread();
@@ -20,8 +20,8 @@ private:
     std::thread thread_;
     std::mutex mutex_;
     std::condition_variable condVar_;
-};*/
-class EventLoop;
+};
+/*class EventLoop;
 
 // One-loop-per-thread
 class EventLoopthread {
@@ -38,5 +38,5 @@ private:
     std::thread _thread;
     std::mutex _mutex;
     std::condition_variable _condVar;
-};
+};*/
 #endif //UNTITLED_EVENTLOOPTHREAD_H
