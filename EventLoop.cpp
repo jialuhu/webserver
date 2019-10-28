@@ -70,13 +70,15 @@ void EventLoop::loop() {
         activeChannel_.clear();
         Kqueue_->kqueue(-1,&activeChannel_);
         std::cout << "Kqueue Loop!\n";
+        //quit_ = true;
         auto ends = activeChannel_.end();
         for(auto it=activeChannel_.begin(); it != ends; it++){
             (*it) -> handleEvent();
         }
+        std::cout<<"doing\n";
+        doPendingFunctors();
     }
-    std::cout<<"doing\n";
-    doPendingFunctors();
+
     looping_ = false;
 }
 void EventLoop::runInLoop(const Functor &cb) {
@@ -101,8 +103,12 @@ void EventLoop::doPendingFunctors() {
         MutexGround locks(mutex_);
         functors.swap(pendingFunctors_);
     }
+   // std::cout << "((((((((((((队列长度: " << functors.size() << std::endl;
     for (size_t i = 0; i < functors.size(); ++i)
     {
+        std::thread::id thread;
+        thread = std::this_thread::get_id();
+        //std::cout << "((((((((((((队列由哪个IO线程执行: " << thread << std::endl;
         functors[i]();
     }
     callingPendingFunctors_ = false;
@@ -117,6 +123,7 @@ void EventLoop::wakeup() {
 }
 
 void EventLoop::handleread() {
+    std::cout << "Handleread  %%%%%%%%%%\n";
     uint64_t one;
     size_t n = ::read(wakeupFd[0], &one, sizeof(one));
     if(n != sizeof(one)){

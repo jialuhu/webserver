@@ -22,6 +22,7 @@ TcpConnection::~TcpConnection() {
     std::cout << "~TcpConnection\n";
 }
 void TcpConnection::connectEstablished() {
+    std::cout << "connectEstablished is build\n";
     assert(conn_state==CONNECTING);
     conn_state = CONNCTED;
     channel_->enableReading();
@@ -33,8 +34,10 @@ void TcpConnection::HandleRead(){
     //此处用Buffer读取出接收到的数据，然后交给onMessageCb进行处理，
     //在Webserver中进行数据分析
     int saveErrno = 0;
+    std::cout << "读取HTTP包 " << channel_->fd() << std::endl;
     int bytes = input_.readFd(channel_->fd(),saveErrno);
     if(bytes>0){
+        std::cout << "有消息!!\n";
         onMessageCb_(shared_from_this(),input_);
     }
     else if(bytes==0){
@@ -46,12 +49,14 @@ void TcpConnection::HandleRead(){
     }
 }
 void TcpConnection::HandleClose() {
+    std::cout << "读取HTTP包1 " << channel_->fd() << std::endl;
     conn_state = CONNCTED;
     channel_->disableAll();
     CloseCb_(shared_from_this());
 }
 
 void TcpConnection::set_HandleErrno(int fd, std::string &head) {
+    std::cout << "读取HTTP包2 " << channel_->fd() << std::endl;
     respond_head = head;
     write(channel_->fd(),respond_head.c_str(),respond_head.size());
     HandleClose();
