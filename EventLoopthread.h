@@ -21,22 +21,5 @@ private:
     std::mutex mutex_;
     std::condition_variable condVar_;
 };
-/*class EventLoop;
 
-// One-loop-per-thread
-class EventLoopthread {
-public:
-    EventLoopthread();
-    ~EventLoopthread();
-    EventLoop *getLoop();
-    EventLoop *getAssertTrueLoop() { return _loop; }
-    void quit();
-private:
-    void threadFunc();
-
-    EventLoop *_loop;
-    std::thread _thread;
-    std::mutex _mutex;
-    std::condition_variable _condVar;
-};*/
 #endif //UNTITLED_EVENTLOOPTHREAD_H
