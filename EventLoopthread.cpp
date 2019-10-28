@@ -7,7 +7,6 @@ EventLoopthread::EventLoopthread():
         loop_(nullptr),
         thread_([this]{this->threadFunc();})
 {
-    std::cout<<"&&&&&&&%%%%%%%%%%\n";
     //进行线程分离，保证该线程不被其他线程回收资源
     thread_.detach();
 }
@@ -33,7 +32,5 @@ void EventLoopthread ::threadFunc() {
         loop_ = &thread_loop;
         condVar_.notify_one();
     }
-    std::cout << "thread_loop\n";
-    //****sleep(5);
     thread_loop.loop();
 }
