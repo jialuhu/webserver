@@ -25,7 +25,7 @@ public:
 private:
     bool Register(Channel* channel,int fd);
     bool Change(Channel* channel,int fd);
-    static int kqfd;
+    int kqfd;
     typedef std::vector<struct kevent> KqueueList;
     typedef std::map<int,Channel*> Channel_Map;
 

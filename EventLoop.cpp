@@ -25,6 +25,7 @@ EventLoop ::EventLoop() :
         wakeupChannel_(),
         Kqueue_(new Kqueue(this))
        {
+    std::cout << "EventLoop线程ID: " << threadId_ << std::endl;
     //判断是否是属于本线程
     if(t_loopInThisThread){
         std::cout << "This thread is used\n";
@@ -38,6 +39,7 @@ EventLoop ::EventLoop() :
     //将可读事件作为唤醒事件
     //wakeupFd = SocketOpt::socketpair();
     SocketOpt::socketpair(wakeupFd);
+    std::cout << "^^^@@@: " << wakeupFd[0] <<" " << wakeupFd[1] << "\n";
     wakeupChannel_ = std::shared_ptr<Channel>(new Channel(this,wakeupFd[0]));
     wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleread,this));
     wakeupChannel_->enableReading();
@@ -55,6 +57,7 @@ void EventLoop::quit() {
 }
 
 void EventLoop::updateChannel(Channel* channel) {
+    std::cout << "zevent loop update\n";
     assert(channel->ownerloop()==this);
     Kqueue_ -> updateChannel(channel);
 }
@@ -66,6 +69,7 @@ void EventLoop::loop() {
     while(!quit_){
         activeChannel_.clear();
         Kqueue_->kqueue(-1,&activeChannel_);
+        std::cout << "Kqueue Loop!\n";
         auto ends = activeChannel_.end();
         for(auto it=activeChannel_.begin(); it != ends; it++){
             (*it) -> handleEvent();
@@ -83,6 +87,7 @@ void EventLoop::runInLoop(const Functor &cb) {
         cb();
     }
     else{
+        std::cout << "不在当前线程，加入队列稍后执行\n";
         queueInLoop(cb);
     }
 }
@@ -137,5 +142,6 @@ void EventLoop::queueInLoop(const Functor &cb) {
     if(!isInLoopThread() || callingPendingFunctors_){
         std::cout << "Part2\n";
         wakeup();
+        std::cout << "Part2\n";
     }
 }

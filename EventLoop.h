@@ -39,6 +39,13 @@ public:
     void handleread();
     void queueInLoop(const Functor& cb);
     void wakeup();
+    void assertInLoopThread()
+    {
+        if (!isInLoopThread())
+        {
+            std::cout << "Thread is non in this pthread!\n";
+        }
+    }
 private:
     boost::scoped_ptr <Kqueue> Kqueue_;
     std::shared_ptr<Channel> wakeupChannel_;
