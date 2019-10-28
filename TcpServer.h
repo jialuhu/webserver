@@ -7,6 +7,7 @@
 
 #include "EventLoop.h"
 #include "Channel.h"
+#include "EventLoopthread.h"
 //#include "ThreadPoll.h"
 #include "Acceptor.h"
 #include "CallBack.h"
@@ -33,6 +34,8 @@ public:
     void removeConnection(const TcpConnectionPtr &conn);
 
 private:
+    EventLoopthread test_loop;
+    //EventLoopthread test_loop;
     EventLoop *loop_;
     InetAddr listenAddr_;
     Acceptor *acceptor_;
