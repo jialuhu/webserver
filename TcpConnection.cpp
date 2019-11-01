@@ -19,7 +19,7 @@ TcpConnection::TcpConnection(EventLoop *loop,
     channel_->setCloseCallback([this]{this->HandleClose();});
 }
 TcpConnection::~TcpConnection() {
-    std::cout << "~TcpConnection\n";
+    std::cout << "~TcpConnection： " << this << std::endl;
 }
 void TcpConnection::connectEstablished() {
     std::cout << "connectEstablished is build\n";
@@ -40,21 +40,35 @@ void TcpConnection::HandleRead(){
         std::cout << "有消息!!\n";
         onMessageCb_(shared_from_this(),input_);
     }
-    else if(bytes==0){
+    else{
+        HandleClose();
+    }
+    /*else if(bytes==0){
+        std::cout << "BBbbbbbbbyte = 0\n";
         HandleClose();
     }
     else{
+        std::cout << "AABBbbbbbbbyte = 0\n";
         errno = saveErrno;
         HandleErrno();
-    }
+    }*/
 }
 void TcpConnection::HandleClose() {
-    std::cout << "读取HTTP包1 " << channel_->fd() << std::endl;
+   /* std::cout << "读取HTTP包1 " << channel_->fd() << std::endl;
     conn_state = CONNCTED;
-    channel_->disableAll();
-    CloseCb_(shared_from_this());
+    //我在这里以及删除fd了*/
+    //channel_->disableAll();
+    //CloseCb_(shared_from_this());
+  if(CloseCb_){
+      channel_->disableAll();
+       loop_->runInLoop(std::bind(CloseCb_, shared_from_this()));
+   }
 }
-
+void TcpConnection::connDestroyed(){
+    loop_->assertInLoopThread();
+    channel_->disableAll();
+    //loop_->removeChannel(get_pointer(channel_));
+}
 void TcpConnection::set_HandleErrno(int fd, std::string &head) {
     std::cout << "读取HTTP包2 " << channel_->fd() << std::endl;
     respond_head = head;
@@ -63,6 +77,7 @@ void TcpConnection::set_HandleErrno(int fd, std::string &head) {
 }
 
 void TcpConnection::HandleErrno() {
+
     HandleClose();
 }
 

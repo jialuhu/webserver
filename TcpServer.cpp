@@ -7,15 +7,21 @@
 TcpServer::TcpServer(EventLoop *loop, InetAddr &listenAddr):
             loop_(loop),
             listenAddr_(listenAddr),
+            ioThreadPool_(new EventLoopthreadPool),
             countId(0),
             acceptor_(new Acceptor(loop,listenAddr)){
     acceptor_->setNewConnectionCallback( std::bind(&TcpServer::newConnection,
             this, std::placeholders::_1));
+    ioThreadPool_->SetThreadNumber(10);
 }
 
 TcpServer::~TcpServer() {
     std::cout << "~TcpServer\n";
 
+}
+
+void TcpServer::setThreadNumber(int threadnumber)  {
+    ioThreadPool_->SetThreadNumber(threadnumber);
 }
 
 void TcpServer::start() {
@@ -35,10 +41,10 @@ void TcpServer::newConnection(int connfd) {
       * 此处从线程池中取出一个线程，并且用EventLoop指向
       */
      //EventLoopthread test_loop;
-     EventLoop* test = test_loop.GetStartLoop();
-     std::cout << "conn->name1: " << connfd << std::endl;
+     EventLoop *test = ioThreadPool_->GetioLoop();
+     //EventLoop* test = test_loop.GetStartLoop();
      std::string s1(buf);
-     //std::cout << "conn->name2: " << s1 << std::endl;
+     /*loop changed*/
      TcpConnectionPtr conn(new TcpConnection(test,s1,connfd,listenAddr_));
      connections_[s1]= conn;
      conn->setConnectionCb(ConnectionCb_);
@@ -48,12 +54,12 @@ void TcpServer::newConnection(int connfd) {
      /**
       * 用线程池的线程runInLoop
       */
-
       test->runInLoop(std::bind(&TcpConnection::connectEstablished, conn));
+      /*单线程模式
+       * */
      //conn->connectEstablished();
-     std::cout << "设置回调，执行回调\n";
 }
-//*************************
+
 void TcpServer::removeConnection(const TcpConnectionPtr &conn){
     /**
      *为什么在此处，多线程执行的话需要用主EventLoop将其加入队列，由主循环结束?
@@ -62,5 +68,36 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn){
      * Part2：所以避免乱套，需要加入主循环EventLoop中，依次被关闭套接字
      * 此处需要对于多线程进行一定修改
      */
+     /*loop_->assertInLoopThread();
+     int n = connections_.erase(conn->name());
+     assert(n==1);*/
+     //std::cout << "hhhhhhhhhhhhh\n";
+     //loop_->runInLoop(std::bind(&TcpServer::removeConnInLoop, this, conn));
+     /**
+      * 与单线程不同
+      */
+
+    //EventLoop *io = conn->getLoop();
+    //io->queueInLoop(std::bind(&TcpConnection::connDestroyed,conn));
     int n = connections_.erase(conn->name());
+    assert(n==1);
+}
+
+void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
+    loop_->assertInLoopThread();
+    std::thread::id Thid = std::this_thread::get_id();
+    std::cout << "胡佳露  "<< Thid <<std::endl;
+    std::cout << "name:: " << connections_.size()<< std::endl;
+    auto e = connections_.find(conn->name());
+    if(e==connections_.end()){
+        std::cout << "没有找到conn->name: " << conn->name() << std::endl;
+        std::cout << "find no element\n";
+    }else{
+        std::cout << "找到conn->name: " << conn->name() << std::endl;
+    }
+    /*size_t n = connections_.erase(conn->name());
+    std::cout << "^^^^n: " << n << std::endl;
+    assert(n==1);*/
+    EventLoop *io = conn->getLoop();
+    io->queueInLoop(std::bind(&TcpConnection::connDestroyed,conn));
 }
