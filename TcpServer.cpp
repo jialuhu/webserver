@@ -72,8 +72,8 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn){
       * 与单线程不同
       */
 
-    EventLoop *io = conn->getLoop();
-    io->runInLoop(std::bind(&TcpConnection::connDestroyed,conn));
+    //EventLoop *io = conn->getLoop();
+    //io->runInLoop(std::bind(&TcpConnection::connDestroyed,conn));
     int n = connections_.erase(conn->name());
     assert(n==1);
 }

@@ -52,7 +52,7 @@ void TcpConnection::HandleClose() {
     //channel_->disableAll();
     //CloseCb_(shared_from_this());
   if(CloseCb_){
-      //channel_->disableAll();
+      channel_->disableAll();
        loop_->runInLoop(std::bind(CloseCb_, shared_from_this()));
    }
 }
