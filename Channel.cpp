@@ -22,7 +22,7 @@ Channel :: ~Channel(){
 
 //更新时间表
 void Channel :: update() {
-    eloop_ -> updateChannel(this);
+    eloop_ ->updateChannel(this);
 }
 
 //执行回调函数

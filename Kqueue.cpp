@@ -4,7 +4,6 @@
 
 #include "Kqueue.h"
 //#include "Channel.h"
-//-int Kqueue::kqfd = -1;
 
 Kqueue::Kqueue(EventLoop *loop):owner_loop_(loop){
     kqfd = ::kqueue();
@@ -75,10 +74,6 @@ bool Kqueue::Change(Channel* channel,int fd){
 }
 
 void Kqueue::updateChannel(Channel* channel) {
-    std::thread::id thread;
-    thread = std::this_thread::get_id();
-    std::cout << "Kqueue thread is " << thread << std::endl;
-    std::cout << "KqueueID thread is " << kqfd << std::endl;
     int idx = channel->index();
     std::cout << "update_fd:" << channel->fd()<<std::endl;
     int kfd = channel -> fd();
@@ -86,7 +81,6 @@ void Kqueue::updateChannel(Channel* channel) {
         assert(channels_.find(kfd) == channels_.end());
         //该事件还未出现在事件注册表中,如新建立的链接
         //对该事件进行注册
-        //std::cout << "Register kfd\n";
         assert(Register(channel,kfd)==true);
     }
         //更新事件表
@@ -102,9 +96,6 @@ void Kqueue::kqueue(int timeout, std::vector<Channel*> *activeChannel){
     for(auto it=channels_.begin();it!=channels_.end();it++){
         int id = it->first;
     }
-    std::thread::id thread;
-    thread = std::this_thread::get_id();
-    std::cout << "Kqueue::kqueue thread is " << thread << std::endl;
     struct kevent krevents[MAX_EVENT_COUNT];
     int ret = ::kevent(kqfd, nullptr, 0, krevents, MAX_EVENT_COUNT, nullptr);
     if(ret>0) {
@@ -112,7 +103,6 @@ void Kqueue::kqueue(int timeout, std::vector<Channel*> *activeChannel){
             int socketfd = krevents[i].ident;
             int datacount = krevents[i].data;
             int setrv = krevents[i].filter;
-            std::cout << "new thread: " << socketfd << "\n";
             assert(channels_.find(socketfd) != channels_.end());
             auto actChannel = channels_[socketfd];
             assert(actChannel->fd() == socketfd);

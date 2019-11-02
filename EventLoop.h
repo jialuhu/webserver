@@ -44,6 +44,7 @@ public:
         if (!isInLoopThread())
         {
             std::cout << "Thread is non in this pthread!\n";
+            return;//此处应该有异常处理
         }
     }
 private:

@@ -62,23 +62,18 @@ void TcpServer::newConnection(int connfd) {
 
 void TcpServer::removeConnection(const TcpConnectionPtr &conn){
     /**
-     *为什么在此处，多线程执行的话需要用主EventLoop将其加入队列，由主循环结束?
+     *为什么在此处，多线程执行的话需要由主循环结束?
      * Part1:因为在newconnection中的时候，已经将HTTP请求的处理交给了新创建的IO线程处理了，所以在新的IO线程中，将会
      * 触发结束套接字的功能模块，那此时该代码块将有可能会被多个线处理。
      * Part2：所以避免乱套，需要加入主循环EventLoop中，依次被关闭套接字
      * 此处需要对于多线程进行一定修改
      */
-     /*loop_->assertInLoopThread();
-     int n = connections_.erase(conn->name());
-     assert(n==1);*/
-     //std::cout << "hhhhhhhhhhhhh\n";
-     //loop_->runInLoop(std::bind(&TcpServer::removeConnInLoop, this, conn));
      /**
       * 与单线程不同
       */
 
-    //EventLoop *io = conn->getLoop();
-    //io->queueInLoop(std::bind(&TcpConnection::connDestroyed,conn));
+    EventLoop *io = conn->getLoop();
+    io->runInLoop(std::bind(&TcpConnection::connDestroyed,conn));
     int n = connections_.erase(conn->name());
     assert(n==1);
 }

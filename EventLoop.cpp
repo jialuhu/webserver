@@ -57,7 +57,7 @@ void EventLoop::quit() {
 }
 
 void EventLoop::updateChannel(Channel* channel) {
-    std::cout << "zevent loop update\n";
+    //std::cout << "zevent loop update\n";
     assert(channel->ownerloop()==this);
     Kqueue_ -> updateChannel(channel);
 }
@@ -69,13 +69,10 @@ void EventLoop::loop() {
     while(!quit_){
         activeChannel_.clear();
         Kqueue_->kqueue(-1,&activeChannel_);
-        std::cout << "Kqueue Loop!\n";
-        //quit_ = true;
         auto ends = activeChannel_.end();
         for(auto it=activeChannel_.begin(); it != ends; it++){
             (*it) -> handleEvent();
         }
-        std::cout<<"doing\n";
         doPendingFunctors();
     }
 
@@ -85,11 +82,11 @@ void EventLoop::runInLoop(const Functor &cb) {
     //如果是当前IO线程调用，则直接可以执行，即同步执行；
     //如果不是在当前线程调用的runInLoop，则加入任务队列，IO线程会被唤醒执行该回调
     if(isInLoopThread()){
-        std::cout << "当前线程，直接执行\n";
+        std::cout << "RunInLoop当前线程，直接执行\n";
         cb();
     }
     else{
-        std::cout << "不在当前线程，加入队列稍后执行\n";
+        std::cout << "RunInLoop不在当前线程，加入队列稍后执行\n";
         queueInLoop(cb);
     }
 }
@@ -103,12 +100,8 @@ void EventLoop::doPendingFunctors() {
         MutexGround locks(mutex_);
         functors.swap(pendingFunctors_);
     }
-   // std::cout << "((((((((((((队列长度: " << functors.size() << std::endl;
     for (size_t i = 0; i < functors.size(); ++i)
     {
-        std::thread::id thread;
-        thread = std::this_thread::get_id();
-        //std::cout << "((((((((((((队列由哪个IO线程执行: " << thread << std::endl;
         functors[i]();
     }
     callingPendingFunctors_ = false;
@@ -123,7 +116,6 @@ void EventLoop::wakeup() {
 }
 
 void EventLoop::handleread() {
-    std::cout << "Handleread  %%%%%%%%%%\n";
     uint64_t one;
     size_t n = ::read(wakeupFd[0], &one, sizeof(one));
     if(n != sizeof(one)){
@@ -147,8 +139,6 @@ void EventLoop::queueInLoop(const Functor &cb) {
         pendingFunctors_.push_back(cb);
     }
     if(!isInLoopThread() || callingPendingFunctors_){
-        std::cout << "Part2\n";
         wakeup();
-        std::cout << "Part2\n";
     }
 }

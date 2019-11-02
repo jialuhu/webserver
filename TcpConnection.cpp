@@ -43,15 +43,7 @@ void TcpConnection::HandleRead(){
     else{
         HandleClose();
     }
-    /*else if(bytes==0){
-        std::cout << "BBbbbbbbbyte = 0\n";
-        HandleClose();
-    }
-    else{
-        std::cout << "AABBbbbbbbbyte = 0\n";
-        errno = saveErrno;
-        HandleErrno();
-    }*/
+
 }
 void TcpConnection::HandleClose() {
    /* std::cout << "读取HTTP包1 " << channel_->fd() << std::endl;
@@ -60,7 +52,7 @@ void TcpConnection::HandleClose() {
     //channel_->disableAll();
     //CloseCb_(shared_from_this());
   if(CloseCb_){
-      channel_->disableAll();
+      //channel_->disableAll();
        loop_->runInLoop(std::bind(CloseCb_, shared_from_this()));
    }
 }
@@ -96,7 +88,6 @@ void TcpConnection::set_Handlewrite(const char* filepath, int fd,std::string &he
     //**响应头的填充
     struct stat tbuf;
     fstat(fd,&tbuf);
-
     char buf[100];
     sprintf(buf,"Content-Length: %d\r\n\r\n",tbuf.st_size);
     buf[strlen(buf)]='\0';
