@@ -18,7 +18,6 @@ public:
      * NOT_FOUND代表请求的资源文件不存在；
      * DYNAMIC_FILE表示是一个动态请求；
      * POST_FILE表示获得一个以POST方式请求的HTTP请求*/
-
     enum HTTP_CODE{NO_REQUESTION, GET_REQUESTION,
             BAD_REQUESTION, FORBIDDEN_REQUESTION,
             FILE_REQUESTION,INTERNAL_ERROR,NOT_FOUND,

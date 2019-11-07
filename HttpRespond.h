@@ -75,7 +75,6 @@ public:
                 conn->set_Handlewrite(method_.c_str(),fd,header);
             }
             close(fd);
-
     }
 private:
     std::string url_;
