@@ -80,9 +80,6 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn){
 
 void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
     loop_->assertInLoopThread();
-    std::thread::id Thid = std::this_thread::get_id();
-    std::cout << "胡佳露  "<< Thid <<std::endl;
-    std::cout << "name:: " << connections_.size()<< std::endl;
     auto e = connections_.find(conn->name());
     if(e==connections_.end()){
         std::cout << "没有找到conn->name: " << conn->name() << std::endl;

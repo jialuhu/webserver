@@ -6,7 +6,6 @@
 #define UNTITLED_HTTPCONTENT_H
 
 #include "TcpConnection.h"
-//#include "Buffer.h"
 #include "HttpRespond.h"
 class HttpContent{
 public:
