@@ -57,21 +57,21 @@ void HttpContent::doit(const TcpConnectionPtr &conn, Buffer &buffer){
     RESULT_ = analyse(conn,buffer);
     switch (RESULT_){
         case BAD_REQUESTION:{
-            std::cout << "请求头格式有问题\n";
+            //std::cout << "请求头格式有问题\n";
             break;
         }
         case FILE_REQUESTION:{
             httprespond_.FillRespond_GET(conn);
-            std::cout << "GET请求方法\n";
+            //std::cout << "GET请求方法\n";
             break;
         }
         case POST_FILE:{
-            std::cout << "POST请求方法\n";
+            //std::cout << "POST请求方法\n";
             std::string post;
             buffer.Buffer_str(post);
             std::string p;
-            std::cout<<"POST的内容: " << post << std::endl;
-            std::cout << "POST的长度: " << post.size()<<std::endl;
+           // std::cout<<"POST的内容: " << post << std::endl;
+           // std::cout << "POST的长度: " << post.size()<<std::endl;
             httprespond_.FillRespond_POST(conn);
         }
     }
@@ -133,12 +133,12 @@ void HttpContent::ParseHeader(Buffer &buffer) {
 
 }
 HttpContent::HTTP_CODE HttpContent::analyse(const TcpConnectionPtr &conn, Buffer &buffer) {
-    std::cout << "address of buffer: " << &buffer << std::endl;
+    //std::cout << "address of buffer: " << &buffer << std::endl;
     status_ = HEAD;
     bool flags = true;
     char *start = buffer.peek();
     char *ends = buffer.peek()+buffer.readable()-4;
-    std::cout << "查看接收到的头:\n";
+    //std::cout << "查看接收到的头:\n";
     while (start!=ends){
         std::cout << *start;
         start++;
@@ -151,21 +151,21 @@ HttpContent::HTTP_CODE HttpContent::analyse(const TcpConnectionPtr &conn, Buffer
         httprespond_.set_postcontent(judge_content.substr(find+4,judge_content.size()-find-4));
     }
     while (buffer.readable()>=2 && flags && buffer.Buffer_find_str("\r\n",content,2)){
-        std::cout<<"查看转化过来的字符串: " << content << std::endl;
+        //std::cout<<"查看转化过来的字符串: " << content << std::endl;
         switch(status_){
             case HEAD:{
-                std::cout << "解析请求行的头部\n";
+          //      std::cout << "解析请求行的头部\n";
                 ParseHeader(buffer);
                 set_status(REQUESTION);
                 break;
             }
             case REQUESTION:{
-                std::cout << "解析请求头字段信息\n";
+            //    std::cout << "解析请求头字段信息\n";
                 ParseRequestion();
                 break;
             }
             default:{
-                std::cout <<"错误输出\n";
+              //  std::cout <<"错误输出\n";
                 flags = false;
             }
         }

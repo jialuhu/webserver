@@ -6,10 +6,9 @@ Acceptor::Acceptor(EventLoop *loop,
         InetAddr &addr)
         :loop_(loop),
         addr_(addr),
-        AcceptorChannle_(new Channel(loop,socket_.sockfd())),
+        AcceptorChannle_(new Channel{loop,socket_.sockfd()}),
         socket_(SocketOpt::socket())
         {
-    std::cout << "Acceptor is build$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
     addr_.Init();
     SocketOpt::setnonblocking(socket_.sockfd());
     SocketOpt::bind(socket_.sockfd(),addr_.inetaddr());

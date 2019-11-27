@@ -31,7 +31,7 @@ void TcpServer::start() {
 void TcpServer::quit(){
     loop_ -> quit();
 }
-//***************************
+
 void TcpServer::newConnection(int connfd) {
     //此处建立相对应的连接事件，并且设置读写事件
      char buf[13]={"hello"};
@@ -45,6 +45,7 @@ void TcpServer::newConnection(int connfd) {
      //EventLoop* test = test_loop.GetStartLoop();
      std::string s1(buf);
      /*loop changed*/
+
      TcpConnectionPtr conn(new TcpConnection(test,s1,connfd,listenAddr_));
      connections_[s1]= conn;
      conn->setConnectionCb(ConnectionCb_);
