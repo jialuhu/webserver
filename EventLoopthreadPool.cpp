@@ -9,7 +9,6 @@ void EventLoopthreadPool::SetThreadNumber(int thread_number){
 }
 
 void EventLoopthreadPool::start() {
-    std::cout << "1\n";
     for(int i=0; i<ThreadNumber_; i++){
         EventLoopthread *one_thread = new EventLoopthread;
         IothreadPool_.push_back(one_thread);

@@ -32,10 +32,11 @@ public:
         CloseCb_ = std::move(cb);
     }
     void setThreadNumber(int threadnumber);
+    EventLoop* getNextLoop();
     void removeConnection(const TcpConnectionPtr &conn);
     void removeConnInLoop(const TcpConnectionPtr &conn);
 private:
-    EventLoopthread test_loop;
+    //EventLoopthread test_loop;
     EventLoopthreadPool* ioThreadPool_;
     EventLoop *loop_;
     InetAddr listenAddr_;

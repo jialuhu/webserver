@@ -12,7 +12,7 @@ TcpServer::TcpServer(EventLoop *loop, InetAddr &listenAddr):
             acceptor_(new Acceptor(loop,listenAddr)){
     acceptor_->setNewConnectionCallback( std::bind(&TcpServer::newConnection,
             this, std::placeholders::_1));
-    ioThreadPool_->SetThreadNumber(10);
+    //ioThreadPool_->SetThreadNumber(4);
 }
 
 TcpServer::~TcpServer() {
@@ -31,7 +31,13 @@ void TcpServer::start() {
 void TcpServer::quit(){
     loop_ -> quit();
 }
-
+EventLoop* TcpServer::getNextLoop() {
+    if(ioThreadPool_->GetThreadNumber()>0){
+        return ioThreadPool_->GetioLoop();
+    }else{
+        return loop_;
+    }
+}
 void TcpServer::newConnection(int connfd) {
     //此处建立相对应的连接事件，并且设置读写事件
      char buf[13]={"hello"};
@@ -41,12 +47,14 @@ void TcpServer::newConnection(int connfd) {
       * 此处从线程池中取出一个线程，并且用EventLoop指向
       */
      //EventLoopthread test_loop;
-     EventLoop *test = ioThreadPool_->GetioLoop();
+     //EventLoop *test = ioThreadPool_->GetioLoop();
+
      //EventLoop* test = test_loop.GetStartLoop();
+     EventLoop *New_loop = getNextLoop();
      std::string s1(buf);
      /*loop changed*/
-
-     TcpConnectionPtr conn(new TcpConnection(test,s1,connfd,listenAddr_));
+    /*多线程需要设置loop_为线程池中的线程*/
+     TcpConnectionPtr conn(new TcpConnection(New_loop,s1,connfd,listenAddr_));
      connections_[s1]= conn;
      conn->setConnectionCb(ConnectionCb_);
      conn->setMessageCb(OnMessageCb_);
@@ -55,7 +63,7 @@ void TcpServer::newConnection(int connfd) {
      /**
       * 用线程池的线程runInLoop
       */
-      test->runInLoop(std::bind(&TcpConnection::connectEstablished, conn));
+      New_loop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn));
       /*单线程模式
        * */
      //conn->connectEstablished();
@@ -72,11 +80,12 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn){
      /**
       * 与单线程不同
       */
-
-    //EventLoop *io = conn->getLoop();
-    //io->runInLoop(std::bind(&TcpConnection::connDestroyed,conn));
     int n = connections_.erase(conn->name());
     assert(n==1);
+    EventLoop *io = conn->getLoop();
+    io->runInLoop(std::bind(&TcpConnection::connDestroyed,conn));
+   // int n = connections_.erase(conn->name());
+   // assert(n==1);
 }
 
 void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {

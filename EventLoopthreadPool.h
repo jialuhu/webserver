@@ -20,6 +20,9 @@ public:
     }
     EventLoop* GetioLoop();
     void SetThreadNumber(int thread_number);
+    int GetThreadNumber(){
+        return ThreadNumber_;
+    }
     void start();
 
 private:
