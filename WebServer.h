@@ -18,6 +18,9 @@ public:
     void onMessage(const TcpConnectionPtr &conn, Buffer &buf);
     void onConnection(const TcpConnectionPtr &conn);
     void start();
+    void setThread(size_t number){
+        server_.setThreadNumber(number);
+    }
     void quit_server();
 private:
     EventLoop *loop_;

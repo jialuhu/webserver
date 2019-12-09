@@ -21,11 +21,9 @@ EventLoop ::EventLoop() :
         looping_(false),
         callingPendingFunctors_(false),
         threadId_(std::this_thread::get_id()),
-        //wakeupFd(SocketOpt::socketpair()),
         wakeupChannel_(),
         Kqueue_(new Kqueue(this))
        {
-    std::cout << "EventLoop线程ID: " << threadId_ << std::endl;
     //判断是否是属于本线程
     if(t_loopInThisThread){
         std::cout << "This thread is used\n";
@@ -39,7 +37,7 @@ EventLoop ::EventLoop() :
     //将可读事件作为唤醒事件
     //wakeupFd = SocketOpt::socketpair();
     SocketOpt::socketpair(wakeupFd);
-    std::cout << "^^^@@@: " << wakeupFd[0] <<" " << wakeupFd[1] << "\n";
+    //std::cout << "^^^@@@: " << wakeupFd[0] <<" " << wakeupFd[1] << "\n";
     wakeupChannel_ = std::shared_ptr<Channel>(new Channel(this,wakeupFd[0]));
     wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleread,this));
     wakeupChannel_->enableReading();

@@ -18,9 +18,8 @@ int main(){
     EventLoop loop;
     InetAddr addr(8888);
     WebServer server(&loop,addr);
+    server.setThread(0);
     server.start();
-    std::cout<<"主线程\n";
     loop.loop();
-    std::cout<<"主线程jieshu\n";
     return 0;
 }

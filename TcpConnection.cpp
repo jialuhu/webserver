@@ -19,7 +19,7 @@ TcpConnection::TcpConnection(EventLoop *loop,
     channel_->setCloseCallback([this]{this->HandleClose();});
 }
 TcpConnection::~TcpConnection() {
-    std::cout << "~TcpConnection： " << this << std::endl;
+    std::cout << "~TcpConnection： "  << std::endl;
 }
 void TcpConnection::connectEstablished() {
     assert(conn_state==CONNECTING);
@@ -49,7 +49,7 @@ void TcpConnection::HandleClose() {
     //channel_->disableAll();
     //CloseCb_(shared_from_this());
   if(CloseCb_){
-          //channel_->disableAll();
+          channel_->disableAll();
           loop_->runInLoop(std::bind(CloseCb_, shared_from_this()));
   }
 }
