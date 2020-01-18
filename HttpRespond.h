@@ -7,6 +7,7 @@
 
 #include "HttpContent.h"
 #include "TcpConnection.h"
+#include "ResPond.h"
 #include <sys/stat.h>
 #include <sys/mman.h>
 class GetConfig;
@@ -69,22 +70,20 @@ public:
     }
     void FillRespond_GET(const TcpConnectionPtr &conn){
             if(method_=="/"){
-                method_ = DocumentPath_ + "/index.html";
+                method_ = DocumentPath_ + "/" + INDEX;
             }else{
-                std::cout << "Documents: " <<DocumentPath_ << std::endl;
                 method_ =DocumentPath_ + method_;
             }
-            std::cout << "method:^^^^^^^^^^^^^ "<< method_ << std::endl;
             int fd = open(method_.c_str(),O_RDWR);
             if(fd < 0){
-                std::string header("HTTP/1.1 404\r\n");
-                std::string content("Connection: close\r\n\r\n");
+                std::string header(HTTP_NOTFOUND);
+                std::string content(HTTP_CONTENT);
                 std::cout << header << content << std::endl;
                 conn->set_HandleErrno(fd, header);
 
             }
             else{
-                std::string header("HTTP/1.1 200 ok\r\nConnection: close\r\n");
+                std::string header(HTTP_OK);
                 conn->set_Handlewrite(method_.c_str(),fd,header);
             }
             close(fd);
