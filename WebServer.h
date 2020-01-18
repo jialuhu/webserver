@@ -10,6 +10,7 @@
 #include "CallBack.h"
 #include <iostream>
 #include <netinet/in.h>
+class GetConfig;
 
 class WebServer{
 public:
@@ -21,10 +22,20 @@ public:
     void setThread(size_t number){
         server_.setThreadNumber(number);
     }
+    void setConfig(const char* SP, const char* CGIP, const char* DOCP,bool B_CGI){
+        SP_.insert(0,SP);
+        CGIP_.insert(0,CGIP);
+        DOCP_.insert(0,DOCP);
+        B_CGI_ = B_CGI;
+    }
     void quit_server();
 private:
     EventLoop *loop_;
     TcpServer server_;
+    std::string SP_;
+    std::string CGIP_;
+    std::string DOCP_;
+    bool B_CGI_;
 };
 
 #endif //UNTITLED_WEBSERVER_H

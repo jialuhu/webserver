@@ -6,7 +6,6 @@
 #define TINY_WEB_CHANNEL_H
 
 #include <boost/function.hpp>
-//#include <sys/epoll.h>
 #include <sys/types.h>
 #include <sys/event.h>
 #include <sys/time.h>

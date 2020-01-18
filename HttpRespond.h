@@ -9,6 +9,7 @@
 #include "TcpConnection.h"
 #include <sys/stat.h>
 #include <sys/mman.h>
+class GetConfig;
 class HttpRespond{
 public:
     HttpRespond();
@@ -17,7 +18,6 @@ public:
         url_ = url;
     }
     void set_method(std::string method){
-        std::cout <<"method_::::::: " << method << std::endl;
         method_ = method;
     }
     void set_version(std::string version){
@@ -50,15 +50,29 @@ public:
     void set_Connection(std::string Connction){
         Connection_ = Connction;
     }
+    void set_Document(std::string dp){
+        DocumentPath_ = std::move(dp);
+    }
+    void set_CGIPath(std::string cgi, bool B_CGI){
+        this->B_CGI = B_CGI;
+        CGIPath_ = std::move(cgi);
+    }
+
     void FillRespond_POST(const TcpConnectionPtr &conn){
-        conn->Post_deal("/Users/jialuhu/2019/add", post_content.c_str());
+        if(B_CGI){
+            method_ = CGIPath_ + method_;
+            conn->Post_deal(method_.c_str(), post_content.c_str());
+        }else{
+            FillRespond_GET(conn);
+        }
+
     }
     void FillRespond_GET(const TcpConnectionPtr &conn){
             if(method_=="/"){
-                method_.c_str();
-                method_ = "/Users/jialuhu/2019/index.html";
+                method_ = DocumentPath_ + "/index.html";
             }else{
-                method_ = "/Users/jialuhu/2019"+method_;
+                std::cout << "Documents: " <<DocumentPath_ << std::endl;
+                method_ =DocumentPath_ + method_;
             }
             std::cout << "method:^^^^^^^^^^^^^ "<< method_ << std::endl;
             int fd = open(method_.c_str(),O_RDWR);
@@ -67,7 +81,6 @@ public:
                 std::string content("Connection: close\r\n\r\n");
                 std::cout << header << content << std::endl;
                 conn->set_HandleErrno(fd, header);
-                std::cout << "打开失败\n";
 
             }
             else{
@@ -89,6 +102,11 @@ private:
     std::string ContentLength_;
     std::string ContentType_;
     std::string Connection_;
+
+    std::string DocumentPath_;
+    std::string CGIPath_;
+    bool B_CGI;
+
 };
 
 HttpRespond::HttpRespond() {

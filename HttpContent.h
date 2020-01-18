@@ -28,13 +28,13 @@ public:
     HttpContent();
     ~HttpContent();
     void doit(const TcpConnectionPtr &conn, Buffer &buf);
+    void setConfig(std::string SP, std::string CGIP, std::string DOCP,bool B_CGI);
 private:
     HttpRespond httprespond_;
     HTTP_CODE analyse(const TcpConnectionPtr& conn, Buffer &buffer);
     void set_status(CHECK_STATUS statu){
         status_ = statu;
     }
-
     void ParseHeader(Buffer &buffer);//解析请求头
     void ParseRequestion();//解析请求
     CHECK_STATUS Analyse_Status(){
@@ -52,7 +52,12 @@ HttpContent::HttpContent(){
 HttpContent::~HttpContent(){
 
 }
-
+void HttpContent::setConfig(std::string SP, std::string CGIP, std::string DOCP,bool B_CGI){
+    if(B_CGI){
+        httprespond_.set_CGIPath(CGIP,B_CGI);
+    }
+    httprespond_.set_Document(DOCP);
+}
 void HttpContent::doit(const TcpConnectionPtr &conn, Buffer &buffer){
     RESULT_ = analyse(conn,buffer);
     switch (RESULT_){
@@ -66,12 +71,9 @@ void HttpContent::doit(const TcpConnectionPtr &conn, Buffer &buffer){
             break;
         }
         case POST_FILE:{
-            //std::cout << "POST请求方法\n";
             std::string post;
             buffer.Buffer_str(post);
             std::string p;
-           // std::cout<<"POST的内容: " << post << std::endl;
-           // std::cout << "POST的长度: " << post.size()<<std::endl;
             httprespond_.FillRespond_POST(conn);
         }
     }
@@ -85,19 +87,19 @@ void HttpContent::ParseRequestion() {
     std::string type_content;
     if(type=="Host:"){
         type_content = content.substr(find+1, content.size()-3);
-        std::cout << "type_content: " << type_content << std::endl;
+        //std::cout << "type_content: " << type_content << std::endl;
         httprespond_.set_Host_(type_content);
     }
     else if(type=="Accept-Language:"){
         //Content-Language;
         type_content = content.substr(find+1, content.size()-3);
-        std::cout << "Content-Language: " << type_content << std::endl;
+        //std::cout << "Content-Language: " << type_content << std::endl;
         httprespond_.set_ContentLanguage(type_content);
 
     }
     else if(type=="Connection:"){
         type_content = content.substr(find+1, content.size()-3);
-        std::cout << "Connection: " << type_content << std::endl;
+        //std::cout << "Connection: " << type_content << std::endl;
         httprespond_.set_Connection(type_content);
     } else{
         std::cout << type << std::endl;
