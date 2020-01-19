@@ -65,8 +65,9 @@ git https://github.com/jialuhu/webserver.git
 ```
 
 ```
-cmake
-./Server
+cd cmake-build-debug
+make
+./untitled
 ```
 ## <a name="4">四、性能测试
 使用siege进行压力测试，结果如下:
