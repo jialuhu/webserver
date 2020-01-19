@@ -133,7 +133,8 @@ HttpContent::HTTP_CODE HttpContent::analyse(const TcpConnectionPtr &conn, Buffer
     char *start = buffer.peek();
     char *ends = buffer.peek()+buffer.readable()-4;
     while (start!=ends){
-        std::cout << *start;
+        //
+        // std::cout << *start;
         start++;
     }
     std::string judge_content;

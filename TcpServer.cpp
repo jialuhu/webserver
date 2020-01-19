@@ -83,10 +83,10 @@ void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
     loop_->assertInLoopThread();
     auto e = connections_.find(conn->name());
     if(e==connections_.end()){
-        std::cout << "没有找到conn->name: " << conn->name() << std::endl;
-        std::cout << "find no element\n";
+        //std::cout << "没有找到conn->name: " << conn->name() << std::endl;
+        //std::cout << "find no element\n";
     }else{
-        std::cout << "找到conn->name: " << conn->name() << std::endl;
+        //std::cout << "找到conn->name: " << conn->name() << std::endl;
     }
     EventLoop *io = conn->getLoop();
     io->queueInLoop(std::bind(&TcpConnection::connDestroyed,conn));

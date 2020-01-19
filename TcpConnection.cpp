@@ -19,7 +19,7 @@ TcpConnection::TcpConnection(EventLoop *loop,
     channel_->setCloseCallback([this]{this->HandleClose();});
 }
 TcpConnection::~TcpConnection() {
-    std::cout << "~TcpConnection： "  << std::endl;
+    //std::cout << "~TcpConnection： "  << std::endl;
 }
 void TcpConnection::connectEstablished() {
     assert(conn_state==CONNECTING);
@@ -72,7 +72,7 @@ void TcpConnection::HandleErrno() {
 void TcpConnection::Post_deal(const char* file_path, const char *argv){
     file_path_=file_path;
     argv_=argv;
-    std::cout << argv_ << std::endl;
+    //std::cout << argv_ << std::endl;
     if(fork()==0)
     {
         dup2(channel_->fd(),STDOUT_FILENO);

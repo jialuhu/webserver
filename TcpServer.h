@@ -36,7 +36,6 @@ public:
     void removeConnection(const TcpConnectionPtr &conn);
     void removeConnInLoop(const TcpConnectionPtr &conn);
 private:
-    //EventLoopthread test_loop;
     EventLoopthreadPool* ioThreadPool_;
     EventLoop *loop_;
     InetAddr listenAddr_;

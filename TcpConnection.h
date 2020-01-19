@@ -16,7 +16,7 @@
 #include "InetAddr.h"
 #include "TcpServer.h"
 #include "Buffer.h"
-//#include "HttpContent.h"
+
 class TcpConnection : boost::noncopyable,
 public boost::enable_shared_from_this<TcpConnection>
 {

@@ -18,39 +18,43 @@ public:
     void set_url(std::string url){
         url_ = url;
     }
+      void set_version(std::string version){
+        version_ = version;
+    }
+
+    /*void set_Respond_Header(std::string head){
+        Respond_Header_ = head;
+    }*/
+
+    /*void set_ContentLength(std::string length){
+        ContentLength_ = length;
+    }*/
+    void set_ContentLanguage(std::string language){
+        ContentLanguage_ = language;
+    }
+
+    /*void set_ContentType(std::string type){
+        ContentType_ = type;
+    }*/
+
+    void set_Connection(std::string Connction){
+        Connection_ = Connction;
+    }
+
     void set_method(std::string method){
         method_ = method;
     }
-    void set_version(std::string version){
-        version_ = version;
-    }
+
 
     void set_postcontent(std::string st){
         post_content = st;
     }
-    void set_Respond_Header(std::string head){
-        Respond_Header_ = head;
-    }
+
 
     void set_Host_(std::string host){
         Host_ = Host_;
     }
 
-    void set_ContentLength(std::string length){
-        ContentLength_ = length;
-    }
-
-    void set_ContentLanguage(std::string language){
-        ContentLanguage_ = language;
-    }
-
-    void set_ContentType(std::string type){
-        ContentType_ = type;
-    }
-
-    void set_Connection(std::string Connction){
-        Connection_ = Connction;
-    }
     void set_Document(std::string dp){
         DocumentPath_ = std::move(dp);
     }
@@ -78,7 +82,7 @@ public:
             if(fd < 0){
                 std::string header(HTTP_NOTFOUND);
                 std::string content(HTTP_CONTENT);
-                std::cout << header << content << std::endl;
+                //std::cout << header << content << std::endl;
                 conn->set_HandleErrno(fd, header);
 
             }
@@ -95,11 +99,11 @@ private:
 
     std::string post_content;
 
-    std::string Respond_Header_;
+    //std::string Respond_Header_;
     std::string Host_;
     std::string ContentLanguage_;
-    std::string ContentLength_;
-    std::string ContentType_;
+    //std::string ContentLength_;
+    //std::string ContentType_;
     std::string Connection_;
 
     std::string DocumentPath_;

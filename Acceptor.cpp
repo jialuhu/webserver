@@ -16,14 +16,14 @@ Acceptor::Acceptor(EventLoop *loop,
 }
 
 Acceptor::~Acceptor() {
-    std::cout << "~Acceptor\n";
+   // std::cout << "~Acceptor\n";
 
 }
 
 void Acceptor::listen() {
     //开启监听套接字
     SocketOpt::listen(socket_.sockfd());
-    std::cout << "socket_sockfd():" << socket_.sockfd() << std::endl;
+   // std::cout << "socket_sockfd():" << socket_.sockfd() << std::endl;
     //向channel中注册可读事件,进行accept
     AcceptorChannle_->enableReading();
 }

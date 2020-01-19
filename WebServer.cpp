@@ -12,7 +12,7 @@ WebServer::WebServer(EventLoop *loop, InetAddr &addr):loop_(loop),
     server_.setOnMessageCb(std::bind(&WebServer::onMessage,this,std::placeholders::_1,std::placeholders::_2));
 }
 WebServer::~WebServer(){
-    std::cout << "~WebServer\n";
+    //std::cout << "~WebServer\n";
 
 }
 void WebServer::start() {
@@ -33,7 +33,7 @@ void WebServer::onMessage(const TcpConnectionPtr &conn, Buffer &buf) {
 
 void WebServer::onConnection(const TcpConnectionPtr &conn) {
     //建立新的http事件
-    std::cout << "WebServer::onConnection\n";
+    //std::cout << "WebServer::onConnection\n";
     conn->setContext(HttpContent());
 }
 

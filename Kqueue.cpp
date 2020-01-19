@@ -3,11 +3,8 @@
 //
 
 #include "Kqueue.h"
-//#include "Channel.h"
-
 Kqueue::Kqueue(EventLoop *loop):owner_loop_(loop){
     kqfd = ::kqueue();
-    std::cout << "####kqfd: " << kqfd << std::endl;
     assert(kqfd>0);
 }
 
@@ -25,7 +22,7 @@ bool Kqueue::Register(Channel* channel,int fd) {
     // 注册的方法是通过 kevent() 将 eventlist 和 neventlist 置成 NULL 和 0 来达到的
     int ret = kevent(kqfd, changes, 1, nullptr, 0, nullptr);
     if (ret == -1){
-        std::cout << ret << std::endl;
+        //std::cout << ret << std::endl;
         return false;
     }
     return true;
@@ -47,7 +44,6 @@ bool Kqueue::Change(Channel* channel,int fd){
             channels_[tmp_fd]->set_index(tmp_index);
         }
         channels_.erase(channel->fd());
-        std::cout << "channel->event is close event:" << channel->event() << std::endl;
         //对kqueue有困惑
         EV_SET(&changes[0], fd, EVFILT_WRITE, EV_DELETE, 0, 0, NULL);
         //std::cout << "channel->event is close flags: " << channel->flags() << std::endl;
@@ -55,7 +51,7 @@ bool Kqueue::Change(Channel* channel,int fd){
         //std::cout << "channel->event is close flags: " << channel->flags() << std::endl;
 
     } else if(channel->is_write()){//************注销写事件
-        std::cout << "注销写事件\n";
+        //std::cout << "注销写事件\n";
         EV_SET(&changes[0], fd, EVFILT_WRITE, EV_DELETE, 0, 0, NULL);
         channel->set_iswrite(false);
     }
@@ -66,7 +62,7 @@ bool Kqueue::Change(Channel* channel,int fd){
     }
     int ret = kevent(kqfd, changes, 1, nullptr, 0, nullptr);
     if (ret == -1) {
-        std::cout << ret << std::endl;
+        //std::cout << ret << std::endl;
         return false;
     }
     return true;
@@ -75,7 +71,7 @@ bool Kqueue::Change(Channel* channel,int fd){
 
 void Kqueue::updateChannel(Channel* channel) {
     int idx = channel->index();
-    std::cout << "update_fd:" << channel->fd()<<std::endl;
+    //std::cout << "update_fd:" << channel->fd()<<std::endl;
     int kfd = channel -> fd();
     if(idx<0){
         assert(channels_.find(kfd) == channels_.end());
@@ -112,10 +108,10 @@ void Kqueue::kqueue(int timeout, std::vector<Channel*> *activeChannel){
         }
     }
     else if(ret==0){
-        std::cout << "Nothing happend\n";
+        //std::cout << "Nothing happend\n";
     }
     else{
-        std::cout << "Kqueue::kqueue\n";
+        //std::cout << "Kqueue::kqueue\n";
     }
 
 }

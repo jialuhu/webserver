@@ -15,7 +15,6 @@ InetAddr::~InetAddr() {
 }
 
 void InetAddr :: Init(){
-    std::cout << "port: " << port_ << std::endl;
     address_.sin_family = AF_INET;
     address_.sin_port = htons(port_);
     address_.sin_addr.s_addr = htons(INADDR_ANY);
