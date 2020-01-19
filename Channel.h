@@ -42,15 +42,11 @@ public:
     }
     //注册可读事件
     void enableReading(){
-        //std::cout << "注册可读事件\n";
-        //std::cout << "EVFILE_READ: " << EVFILT_READ << std::endl;
         event_ = EVFILT_READ;
-        //std::cout << "update\n";
         update();
     }
     //注册可写事件
     void enableWriting(){
-        //std::cout << "注册可写事件\n";
         event_ = EVFILT_WRITE;
         update();
     }
@@ -61,7 +57,6 @@ public:
     }
     //不可再写
     void disableWriting(){
-        //event_ &= ~EVFILT_WRITE;
        iswrite = true;
         update();
     }

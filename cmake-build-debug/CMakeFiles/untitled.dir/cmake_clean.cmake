@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/untitled.dir/WebServer.cpp.o"
   "CMakeFiles/untitled.dir/TcpConnection.cpp.o"
   "CMakeFiles/untitled.dir/Buffer.cpp.o"
+  "CMakeFiles/untitled.dir/EventLoopthread.cpp.o"
+  "CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.o"
   "untitled.pdb"
   "untitled"
 )

@@ -26,7 +26,7 @@ EventLoop ::EventLoop() :
        {
     //判断是否是属于本线程
     if(t_loopInThisThread){
-       // std::cout << "This thread is used\n";
+        std::cout << "This thread is used\n";
     }
     else{
         t_loopInThisThread = this;
@@ -35,9 +35,7 @@ EventLoop ::EventLoop() :
     //初始化唤醒事件的fd以及唤醒事件channel
     //SocketOpt::socketpair(wakeupFd);
     //将可读事件作为唤醒事件
-    //wakeupFd = SocketOpt::socketpair();
     SocketOpt::socketpair(wakeupFd);
-    //std::cout << "^^^@@@: " << wakeupFd[0] <<" " << wakeupFd[1] << "\n";
     wakeupChannel_ = std::shared_ptr<Channel>(new Channel(this,wakeupFd[0]));
     wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleread,this));
     wakeupChannel_->enableReading();
@@ -45,7 +43,6 @@ EventLoop ::EventLoop() :
 }
 
 EventLoop :: ~EventLoop(){
-    //std::cout << "Eventloop析构函数\n";
     assert(!looping_);
     t_loopInThisThread = nullptr;
 }
@@ -55,7 +52,6 @@ void EventLoop::quit() {
 }
 
 void EventLoop::updateChannel(Channel* channel) {
-    //std::cout << "zevent loop update\n";
     assert(channel->ownerloop()==this);
     Kqueue_ -> updateChannel(channel);
 }
@@ -80,11 +76,10 @@ void EventLoop::runInLoop(const Functor &cb) {
     //如果是当前IO线程调用，则直接可以执行，即同步执行；
     //如果不是在当前线程调用的runInLoop，则加入任务队列，IO线程会被唤醒执行该回调
     if(isInLoopThread()){
-        //std::cout << "RunInLoop当前线程，直接执行\n";
         cb();
     }
     else{
-        //std::cout << "RunInLoop不在当前线程，加入队列稍后执行\n";
+        /*RunInLoop不在当前线程，加入队列稍后执行*/
         queueInLoop(cb);
     }
 }
@@ -109,7 +104,7 @@ void EventLoop::wakeup() {
     //向wakeupFd[1]写入8个字节，唤醒阻塞线程
     size_t n = ::write(wakeupFd[1],&one, sizeof(one));
     if(n != sizeof(one)){
-        //std::cout << "EventLoop wakeup is wrong bites: " << sizeof(one) << std::endl;
+        std::cout << "EventLoop wakeup is wrong bites: " << sizeof(one) << std::endl;
     }
 }
 
@@ -117,7 +112,7 @@ void EventLoop::handleread() {
     uint64_t one;
     size_t n = ::read(wakeupFd[0], &one, sizeof(one));
     if(n != sizeof(one)){
-       // std::cout << "EventLoop handleread is wrong bites: " << sizeof(one) << std::endl;
+        std::cout << "EventLoop handleread is wrong bites: " << sizeof(one) << std::endl;
     }
 }
 /**为什么要在这两种情况下有必要唤醒IO线程？

@@ -80,7 +80,6 @@ public:
     size_t readFd(int fd,int &save);
 
     bool Buffer_find_str(const char *str,std::string &result,size_t len_){
-        //std::cout << "读缓冲区的大小: " << enableRead() <<std::endl;
         std::string find_string;
         Buffer_str(find_string);
         int find = find_string.find(str)+len_;

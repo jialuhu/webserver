@@ -82,7 +82,6 @@ public:
             if(fd < 0){
                 std::string header(HTTP_NOTFOUND);
                 std::string content(HTTP_CONTENT);
-                //std::cout << header << content << std::endl;
                 conn->set_HandleErrno(fd, header);
 
             }

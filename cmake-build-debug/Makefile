@@ -231,6 +231,60 @@ EventLoop.cpp.s:
 	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoop.cpp.s
 .PHONY : EventLoop.cpp.s
 
+EventLoopthread.o: EventLoopthread.cpp.o
+
+.PHONY : EventLoopthread.o
+
+# target to build an object file
+EventLoopthread.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthread.cpp.o
+.PHONY : EventLoopthread.cpp.o
+
+EventLoopthread.i: EventLoopthread.cpp.i
+
+.PHONY : EventLoopthread.i
+
+# target to preprocess a source file
+EventLoopthread.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthread.cpp.i
+.PHONY : EventLoopthread.cpp.i
+
+EventLoopthread.s: EventLoopthread.cpp.s
+
+.PHONY : EventLoopthread.s
+
+# target to generate assembly for a file
+EventLoopthread.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthread.cpp.s
+.PHONY : EventLoopthread.cpp.s
+
+EventLoopthreadPool.o: EventLoopthreadPool.cpp.o
+
+.PHONY : EventLoopthreadPool.o
+
+# target to build an object file
+EventLoopthreadPool.cpp.o:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.o
+.PHONY : EventLoopthreadPool.cpp.o
+
+EventLoopthreadPool.i: EventLoopthreadPool.cpp.i
+
+.PHONY : EventLoopthreadPool.i
+
+# target to preprocess a source file
+EventLoopthreadPool.cpp.i:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.i
+.PHONY : EventLoopthreadPool.cpp.i
+
+EventLoopthreadPool.s: EventLoopthreadPool.cpp.s
+
+.PHONY : EventLoopthreadPool.s
+
+# target to generate assembly for a file
+EventLoopthreadPool.cpp.s:
+	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.s
+.PHONY : EventLoopthreadPool.cpp.s
+
 InetAddr.o: InetAddr.cpp.o
 
 .PHONY : InetAddr.o
@@ -441,6 +495,12 @@ help:
 	@echo "... EventLoop.o"
 	@echo "... EventLoop.i"
 	@echo "... EventLoop.s"
+	@echo "... EventLoopthread.o"
+	@echo "... EventLoopthread.i"
+	@echo "... EventLoopthread.s"
+	@echo "... EventLoopthreadPool.o"
+	@echo "... EventLoopthreadPool.i"
+	@echo "... EventLoopthreadPool.s"
 	@echo "... InetAddr.o"
 	@echo "... InetAddr.i"
 	@echo "... InetAddr.s"

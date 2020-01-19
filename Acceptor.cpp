@@ -16,7 +16,7 @@ Acceptor::Acceptor(EventLoop *loop,
 }
 
 Acceptor::~Acceptor() {
-   // std::cout << "~Acceptor\n";
+    std::cout << "~Acceptor\n";
 
 }
 
