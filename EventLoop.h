@@ -38,12 +38,13 @@ public:
     void doPendingFunctors();
     void handleread();
     void queueInLoop(const Functor& cb);
+    void initwake();
     void wakeup();
     void assertInLoopThread()
     {
         if (!isInLoopThread())
         {
-            //std::cout << "Thread is non in this pthread!\n";
+            std::cout << "Thread is non in this pthread!\n";
             return;//此处应该有异常处理
         }
     }

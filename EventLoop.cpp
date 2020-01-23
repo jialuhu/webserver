@@ -4,7 +4,6 @@
 #include "EventLoop.h"
 #include "Channel.h"
 #include "Kqueue.h"
-//#include "SocketOpt.h"
 #include "MutexLock.h"
 class IgnoreSignal{
 public:
@@ -35,10 +34,10 @@ EventLoop ::EventLoop() :
     //初始化唤醒事件的fd以及唤醒事件channel
     //SocketOpt::socketpair(wakeupFd);
     //将可读事件作为唤醒事件
-    SocketOpt::socketpair(wakeupFd);
+    /*SocketOpt::socketpair(wakeupFd);
     wakeupChannel_ = std::shared_ptr<Channel>(new Channel(this,wakeupFd[0]));
     wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleread,this));
-    wakeupChannel_->enableReading();
+    wakeupChannel_->enableReading();*/
 
 }
 
@@ -57,6 +56,7 @@ void EventLoop::updateChannel(Channel* channel) {
 }
 
 void EventLoop::loop() {
+    initwake();
     assert(!looping_);
     looping_ = true;
     quit_ = false;
@@ -98,6 +98,15 @@ void EventLoop::doPendingFunctors() {
         functors[i]();
     }
     callingPendingFunctors_ = false;
+}
+void EventLoop::initwake() {
+    //初始化唤醒事件的fd以及唤醒事件channel
+    //SocketOpt::socketpair(wakeupFd);
+    //将可读事件作为唤醒事件
+    SocketOpt::socketpair(wakeupFd);
+    wakeupChannel_ = std::shared_ptr<Channel>(new Channel(this,wakeupFd[0]));
+    wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleread,this));
+    wakeupChannel_->enableReading();
 }
 void EventLoop::wakeup() {
     uint64_t one = 1;
