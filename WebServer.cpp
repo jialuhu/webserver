@@ -25,7 +25,6 @@ void WebServer::quit_server() {
 
 void WebServer::onMessage(const TcpConnectionPtr &conn, Buffer &buf) {
     //根据读的结果放入线程池里
-    std::string mystring;
     auto &httpcontent = boost::any_cast<HttpContent&>(conn->getContext());
     httpcontent.setConfig(SP_,CGIP_,DOCP_,B_CGI_);
     httpcontent.doit(conn,buf);

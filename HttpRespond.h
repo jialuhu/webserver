@@ -87,6 +87,12 @@ public:
             }
             else{
                 std::string header(HTTP_OK);
+                struct stat tbuf;
+                fstat(fd,&tbuf);
+                char buf[100];
+                sprintf(buf,"Content-Length: %d\r\n\r\n",tbuf.st_size);
+                buf[strlen(buf)]='\0';
+                header = header+buf;
                 conn->set_Handlewrite(method_.c_str(),fd,header);
             }
             close(fd);

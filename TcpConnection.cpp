@@ -72,7 +72,6 @@ void TcpConnection::HandleErrno() {
 void TcpConnection::Post_deal(const char* file_path, const char *argv){
     file_path_=file_path;
     argv_=argv;
-    //std::cout << argv_ << std::endl;
     if(fork()==0)
     {
         dup2(channel_->fd(),STDOUT_FILENO);
@@ -81,15 +80,7 @@ void TcpConnection::Post_deal(const char* file_path, const char *argv){
     wait(nullptr);
 }
 void TcpConnection::set_Handlewrite(const char* filepath, int fd,std::string &head) {
-    //**响应头的填充
-    struct stat tbuf;
-    fstat(fd,&tbuf);
-    char buf[100];
-    sprintf(buf,"Content-Length: %d\r\n\r\n",tbuf.st_size);
-    buf[strlen(buf)]='\0';
-    head = head+buf;
-    respond_head = head;
-    write(channel_->fd(),respond_head.c_str(),respond_head.size());
+    write(channel_->fd(),head.c_str(),head.size());
     int save;
     int sum = 0;
     int n;
@@ -101,7 +92,6 @@ void TcpConnection::set_Handlewrite(const char* filepath, int fd,std::string &he
 }
 
 
-//**************此处需要修改
 void TcpConnection::HandleWrite(){
     int ret;
     ret = ::write(channel_->fd(), output_.peek(), output_.readable());
