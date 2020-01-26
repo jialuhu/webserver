@@ -49,10 +49,8 @@ public:
             }
         }else if(strcmp(important,HEAD_CGI)==0){
             if(strcmp(type,YESCGI)==0){
-                //std::cout << "YES\n";
                 B_CGI = true;
             }else{
-                //std::cout << "YES\n";
                 B_CGI = false;
             }
 
@@ -72,6 +70,16 @@ public:
                 CGIPath.clear();
                 CGIPath.insert(0,type);
             }
+        }else if(strcmp(important,HEAD_ADDR)==0){
+            if(ADDR.compare(type)!=0){
+                ADDR.clear();
+                ADDR.insert(0,type);
+            }
+        }else if(strcmp(important,HEAD_ThreadNumber)==0){
+            int t = atoi(type);
+            if(ThreadN != t){
+                ThreadN = t;
+            }
         }
     }
     void display(){
@@ -79,6 +87,7 @@ public:
         std::cout << Listen_Port << "\n";
         std::cout << DocumentPath << "\n";
         std::cout << CGIPath << "\n";
+        std::cout << ADDR << "\n";
         std::cout << B_CGI << "\n";
     }
     const char* Return_ServerRoot(){
@@ -90,6 +99,12 @@ public:
     const char* Return_CGIPath(){
         return CGIPath.c_str();
     }
+    const char* Return_ADDR(){
+        return ADDR.c_str();
+    }
+    int Return_ThreadN(){
+        return ThreadN;
+    }
     int Return_Listen(){
         return Listen_Port;
     }
@@ -100,8 +115,11 @@ private:
     const char *ConfigPath{CONFIG_PATH};
     std::string ServerRoot{SERVERROOT};
     int Listen_Port{LISTEN};
+    int ThreadN{ThreadNumber};
     std::string DocumentPath{DOCUMENTPATH};
     std::string CGIPath{CGIPATH};
+    std::string ADDR{ADDRESS};
+
     bool B_CGI{CGI};
 };
 
