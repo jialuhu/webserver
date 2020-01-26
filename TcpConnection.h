@@ -35,7 +35,6 @@ public:
     void setMessageCb(OnMessageCallback cb){
         onMessageCb_ = std::move(cb);
     }
-    //*******************
     void setCloseCb(CloseCallback cb){
         CloseCb_ = std::move(cb);
     }
@@ -48,12 +47,12 @@ public:
         return context_;
     }
     const std::string& name() const {
-        //std::string s1(conn_name_);
         return conn_name_;
     }
     int sockfds(){
         return connfd_;
     }
+    std::shared_ptr<Channel> getChannel() const {return channel_;}
     //进行用户的回调
     void connectEstablished();
     void Post_deal(const char* file_path, const char *argv);
@@ -67,7 +66,7 @@ private:
     void HandleWrite();
     void HandleClose();
     void HandleErrno();
-    boost::scoped_ptr<Channel> channel_;
+    std::shared_ptr<Channel> channel_;
     EventLoop *loop_;
     std::string conn_name_;
     int connfd_;
@@ -76,7 +75,7 @@ private:
     State conn_state;
     ConnectionCallback connectionCb_;
     OnMessageCallback onMessageCb_;
-    CloseCallback CloseCb_;//***************
+    CloseCallback CloseCb_;
     Buffer input_;
     std::string respond_head;
     Buffer output_;

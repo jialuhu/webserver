@@ -22,7 +22,6 @@ bool Kqueue::Register(Channel* channel,int fd) {
     // 注册的方法是通过 kevent() 将 eventlist 和 neventlist 置成 NULL 和 0 来达到的
     int ret = kevent(kqfd, changes, 1, nullptr, 0, nullptr);
     if (ret == -1){
-        //std::cout << ret << std::endl;
         return false;
     }
     return true;
@@ -33,7 +32,6 @@ bool Kqueue::Change(Channel* channel,int fd){
     if(channel->is_close()){
         if(channel->index() == (kqfds_.size()-1))
         {
-            //删除vector尾元素
             kqfds_.pop_back();
         }
         else{
@@ -44,28 +42,20 @@ bool Kqueue::Change(Channel* channel,int fd){
             channels_[tmp_fd]->set_index(tmp_index);
         }
         channels_.erase(channel->fd());
-        //对kqueue有困惑
         EV_SET(&changes[0], fd, EVFILT_WRITE, EV_DELETE, 0, 0, NULL);
-        //std::cout << "channel->event is close flags: " << channel->flags() << std::endl;
         EV_SET(&changes[0], fd, EVFILT_READ, EV_DELETE, 0, 0, NULL);
-        //std::cout << "channel->event is close flags: " << channel->flags() << std::endl;
-
-    } else if(channel->is_write()){//************注销写事件
-        //std::cout << "注销写事件\n";
+    } else if(channel->is_write()){
         EV_SET(&changes[0], fd, EVFILT_WRITE, EV_DELETE, 0, 0, NULL);
         channel->set_iswrite(false);
     }
-    else if(channel->event()==EVFILT_READ){
-        std::cout << "kyidu\n";
+    if(channel->event()==EVFILT_READ){
         EV_SET(&changes[0], fd, EVFILT_READ, EV_ADD, 0, 0, NULL);
-        std::cout << "kyidu\n";
-    }else if(channel->event()==EVFILT_WRITE){
-        std::cout << "kyixie\n";
+    }
+    if(channel->event()==EVFILT_WRITE){
         EV_SET(&changes[0], fd, EVFILT_WRITE, EV_ADD, 0, 0, NULL);
     }
     int ret = kevent(kqfd, changes, 1, nullptr, 0, nullptr);
     if (ret == -1) {
-        //std::cout << ret << std::endl;
         return false;
     }
     return true;
@@ -74,7 +64,6 @@ bool Kqueue::Change(Channel* channel,int fd){
 
 void Kqueue::updateChannel(Channel* channel) {
     int idx = channel->index();
-    //std::cout << "update_fd:" << channel->fd()<<std::endl;
     int kfd = channel -> fd();
     if(idx<0){
         assert(channels_.find(kfd) == channels_.end());
@@ -100,7 +89,6 @@ void Kqueue::kqueue(int timeout, std::vector<Channel*> *activeChannel){
     if(ret>0) {
         for (int i=0; i<ret; i++) {
             int socketfd = krevents[i].ident;
-            int datacount = krevents[i].data;
             int setrv = krevents[i].filter;
             assert(channels_.find(socketfd) != channels_.end());
             auto actChannel = channels_[socketfd];

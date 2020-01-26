@@ -18,11 +18,3 @@ int main(){
     loop.loop();
     return 0;
 }
-/*int main(){
-    std::string name{"/Users/jialuhu/CLionProjects/webserver/httped.conf"};
-    GetConfig getConfig(name.c_str());
-    getConfig.display();
-    getConfig.ReadConfig();
-    getConfig.display();
-    return 0;
-}*/

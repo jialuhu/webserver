@@ -31,14 +31,6 @@ EventLoop ::EventLoop() :
         t_loopInThisThread = this;
     }
 
-    //初始化唤醒事件的fd以及唤醒事件channel
-    //SocketOpt::socketpair(wakeupFd);
-    //将可读事件作为唤醒事件
-    /*SocketOpt::socketpair(wakeupFd);
-    wakeupChannel_ = std::shared_ptr<Channel>(new Channel(this,wakeupFd[0]));
-    wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleread,this));
-    wakeupChannel_->enableReading();*/
-
 }
 
 EventLoop :: ~EventLoop(){
@@ -123,6 +115,14 @@ void EventLoop::handleread() {
     if(n != sizeof(one)){
         std::cout << "EventLoop handleread is wrong bites: " << sizeof(one) << std::endl;
     }
+}
+
+void EventLoop::removeRunInLoop(const std::shared_ptr<Channel> channel_){
+    runInLoop([this, channel_]{ this->removeChannelInLoop(channel_); });
+}
+void EventLoop::removeChannelInLoop(const std::shared_ptr<Channel> channel_)
+{
+    channel_->disableAll();
 }
 /**为什么要在这两种情况下有必要唤醒IO线程？
  * Part1：如果调用queueInLoop不是在IO线程中，此时的IO线程正在阻塞在多路复用的调用中，比如epoll，poll此类函数，

@@ -34,6 +34,10 @@ public:
     bool isInLoopThread(){
         return std::this_thread::get_id()==threadId_;
     }
+
+    void removeRunInLoop(const std::shared_ptr<Channel> channel_);
+    void removeChannelInLoop(const std::shared_ptr<Channel> channel_);
+
     void runInLoop(const Functor& cb);
     void doPendingFunctors();
     void handleread();

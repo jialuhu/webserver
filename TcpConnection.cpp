@@ -43,13 +43,7 @@ void TcpConnection::HandleRead(){
 
 }
 void TcpConnection::HandleClose() {
-   /* std::cout << "读取HTTP包1 " << channel_->fd() << std::endl;
-    conn_state = CONNCTED;
-    //我在这里以及删除fd了*/
-    //channel_->disableAll();
-    //CloseCb_(shared_from_this());
   if(CloseCb_){
-          channel_->disableAll();
           loop_->runInLoop(std::bind(CloseCb_, shared_from_this()));
   }
 }

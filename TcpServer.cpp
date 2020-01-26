@@ -75,6 +75,7 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn){
      /**
       * 与单线程不同
       */
+     conn->getLoop()->removeRunInLoop(conn->getChannel());
     int n = connections_.erase(conn->name());
     assert(n==1);
 }
@@ -83,8 +84,7 @@ void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
     loop_->assertInLoopThread();
     auto e = connections_.find(conn->name());
     if(e==connections_.end()){
-        //std::cout << "没有找到conn->name: " << conn->name() << std::endl;
-        //std::cout << "find no element\n";
+        std::cout << "Not find the element\n";
     }else{
         //std::cout << "找到conn->name: " << conn->name() << std::endl;
     }
