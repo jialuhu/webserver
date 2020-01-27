@@ -19,7 +19,6 @@ TcpConnection::TcpConnection(EventLoop *loop,
     channel_->setCloseCallback([this]{this->HandleClose();});
 }
 TcpConnection::~TcpConnection() {
-    //std::cout << "~TcpConnection： "  << std::endl;
 }
 void TcpConnection::connectEstablished() {
     assert(conn_state==CONNECTING);
@@ -50,7 +49,6 @@ void TcpConnection::HandleClose() {
 void TcpConnection::connDestroyed(){
     loop_->assertInLoopThread();
     channel_->disableAll();
-    //loop_->removeChannel(get_pointer(channel_));
 }
 void TcpConnection::set_HandleErrno(int fd, std::string &head) {
     respond_head = head;
@@ -92,6 +90,7 @@ void TcpConnection::HandleWrite(){
     if(ret == -1){
         HandleErrno();
     }
+    //若数据发送完毕，应关闭可发送事件
     if(ret == output_.readable()){
         channel_->disableWriting();
     }
