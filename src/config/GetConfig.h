@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstring>
 #include <unistd.h>
+#include <sys/stat.h>
 #include "Config.h"
 class GetConfig{
 public:
@@ -21,16 +22,24 @@ public:
 
     }
     void ReadConfig(){
+        struct stat file_stat{};
         char dir[256];
         getcwd(dir,256);
         char *path = new char[strlen(dir)+strlen(ConfigPath)];
         sprintf(path,"%s/%s",dir,ConfigPath);
-        std::cout << "path: " << path << std::endl;
+        size_t file_len;
+        stat(path,&file_stat);
+        file_len = file_stat.st_size;
+        //配置文件大小限制
+        if(file_len>1024){
+            std::cout << "File of config is too big to run webservre\n";
+            exit(0);
+        }
         std::ifstream Read(path);
-        char buf[1024];
+        char *buf = new char[file_len+1];
         while(true){
-            memset(buf,0,1024);
-            Read.getline(buf,1024);
+            memset(buf,0,file_len);
+            Read.getline(buf,file_len);
             buf[strlen(buf)]='\0';
             if(buf[0]=='#'||strcmp(buf,CONFIG_START)==0){
                 continue;
@@ -42,6 +51,8 @@ public:
                 SetConfig(buf);
             }
         }
+        delete[] buf;
+        delete[] path;
         Read.close();
     }
     void SetConfig(char *important){
