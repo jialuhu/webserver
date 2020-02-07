@@ -41,6 +41,8 @@ Listen://监听端口号
 DocumentPath: //静态网页文件放置绝对目录
 CGIPath: //CGI执行文件放置绝对目录
 CGI: //是否开启CGI功能，默认值是不开启
+ADDR://设置站点ip地址,默认为回环地址
+ThreadNumber://大于0默认开启多线程服务，等于0启动单线程服务
 ``` 
 默认配置例子：
 
@@ -50,6 +52,8 @@ Listen: 8888
 DocumentPath: /etc/TinyHtp/WWW/Documents
 CGIPath: /etc/TinyHtp/WWW/CGI
 CGI: NO
+ADDR: 127.0.0.1
+ThreadNumber: 0
 ```
 #### 3.3.2运行环境
 
@@ -67,16 +71,16 @@ git https://github.com/jialuhu/webserver.git
 ```
 cd cmake-build-debug
 make
-./untitled
+./webserver
 ```
 ## <a name="4">四、性能测试
 使用siege进行压力测试，结果如下:
 ### 4.1 TinyWebServer
-![image](https://github.com/jialuhu/webserver/blob/master/TinyWeb.png)
-![image](https://github.com/jialuhu/webserver/blob/master/TinyWeb_50000_2.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/TinyWeb.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/TinyWeb_50000_2.png)
 
 ### 4.2 Apache
-![image](https://github.com/jialuhu/webserver/blob/master/Apache.png)
-![image](https://github.com/jialuhu/webserver/blob/master/apache_50000_2.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Apache.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/apache_50000_2.png)
 
 
