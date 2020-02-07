@@ -111,368 +111,368 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named untitled
+# Target rules for targets named webserver
 
 # Build rule for target.
-untitled: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 untitled
-.PHONY : untitled
+webserver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 webserver
+.PHONY : webserver
 
 # fast build rule for target.
-untitled/fast:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/build
-.PHONY : untitled/fast
+webserver/fast:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/build
+.PHONY : webserver/fast
 
-Acceptor.o: Acceptor.cpp.o
+src/base/Acceptor.o: src/base/Acceptor.cpp.o
 
-.PHONY : Acceptor.o
-
-# target to build an object file
-Acceptor.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Acceptor.cpp.o
-.PHONY : Acceptor.cpp.o
-
-Acceptor.i: Acceptor.cpp.i
-
-.PHONY : Acceptor.i
-
-# target to preprocess a source file
-Acceptor.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Acceptor.cpp.i
-.PHONY : Acceptor.cpp.i
-
-Acceptor.s: Acceptor.cpp.s
-
-.PHONY : Acceptor.s
-
-# target to generate assembly for a file
-Acceptor.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Acceptor.cpp.s
-.PHONY : Acceptor.cpp.s
-
-Buffer.o: Buffer.cpp.o
-
-.PHONY : Buffer.o
+.PHONY : src/base/Acceptor.o
 
 # target to build an object file
-Buffer.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Buffer.cpp.o
-.PHONY : Buffer.cpp.o
+src/base/Acceptor.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Acceptor.cpp.o
+.PHONY : src/base/Acceptor.cpp.o
 
-Buffer.i: Buffer.cpp.i
+src/base/Acceptor.i: src/base/Acceptor.cpp.i
 
-.PHONY : Buffer.i
+.PHONY : src/base/Acceptor.i
 
 # target to preprocess a source file
-Buffer.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Buffer.cpp.i
-.PHONY : Buffer.cpp.i
+src/base/Acceptor.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Acceptor.cpp.i
+.PHONY : src/base/Acceptor.cpp.i
 
-Buffer.s: Buffer.cpp.s
+src/base/Acceptor.s: src/base/Acceptor.cpp.s
 
-.PHONY : Buffer.s
+.PHONY : src/base/Acceptor.s
 
 # target to generate assembly for a file
-Buffer.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Buffer.cpp.s
-.PHONY : Buffer.cpp.s
+src/base/Acceptor.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Acceptor.cpp.s
+.PHONY : src/base/Acceptor.cpp.s
 
-Channel.o: Channel.cpp.o
+src/base/Buffer.o: src/base/Buffer.cpp.o
 
-.PHONY : Channel.o
+.PHONY : src/base/Buffer.o
 
 # target to build an object file
-Channel.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Channel.cpp.o
-.PHONY : Channel.cpp.o
+src/base/Buffer.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Buffer.cpp.o
+.PHONY : src/base/Buffer.cpp.o
 
-Channel.i: Channel.cpp.i
+src/base/Buffer.i: src/base/Buffer.cpp.i
 
-.PHONY : Channel.i
+.PHONY : src/base/Buffer.i
 
 # target to preprocess a source file
-Channel.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Channel.cpp.i
-.PHONY : Channel.cpp.i
+src/base/Buffer.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Buffer.cpp.i
+.PHONY : src/base/Buffer.cpp.i
 
-Channel.s: Channel.cpp.s
+src/base/Buffer.s: src/base/Buffer.cpp.s
 
-.PHONY : Channel.s
+.PHONY : src/base/Buffer.s
 
 # target to generate assembly for a file
-Channel.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Channel.cpp.s
-.PHONY : Channel.cpp.s
+src/base/Buffer.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Buffer.cpp.s
+.PHONY : src/base/Buffer.cpp.s
 
-EventLoop.o: EventLoop.cpp.o
+src/base/Channel.o: src/base/Channel.cpp.o
 
-.PHONY : EventLoop.o
+.PHONY : src/base/Channel.o
 
 # target to build an object file
-EventLoop.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoop.cpp.o
-.PHONY : EventLoop.cpp.o
+src/base/Channel.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Channel.cpp.o
+.PHONY : src/base/Channel.cpp.o
 
-EventLoop.i: EventLoop.cpp.i
+src/base/Channel.i: src/base/Channel.cpp.i
 
-.PHONY : EventLoop.i
+.PHONY : src/base/Channel.i
 
 # target to preprocess a source file
-EventLoop.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoop.cpp.i
-.PHONY : EventLoop.cpp.i
+src/base/Channel.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Channel.cpp.i
+.PHONY : src/base/Channel.cpp.i
 
-EventLoop.s: EventLoop.cpp.s
+src/base/Channel.s: src/base/Channel.cpp.s
 
-.PHONY : EventLoop.s
+.PHONY : src/base/Channel.s
 
 # target to generate assembly for a file
-EventLoop.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoop.cpp.s
-.PHONY : EventLoop.cpp.s
+src/base/Channel.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Channel.cpp.s
+.PHONY : src/base/Channel.cpp.s
 
-EventLoopthread.o: EventLoopthread.cpp.o
+src/base/EventLoop.o: src/base/EventLoop.cpp.o
 
-.PHONY : EventLoopthread.o
+.PHONY : src/base/EventLoop.o
 
 # target to build an object file
-EventLoopthread.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthread.cpp.o
-.PHONY : EventLoopthread.cpp.o
+src/base/EventLoop.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoop.cpp.o
+.PHONY : src/base/EventLoop.cpp.o
 
-EventLoopthread.i: EventLoopthread.cpp.i
+src/base/EventLoop.i: src/base/EventLoop.cpp.i
 
-.PHONY : EventLoopthread.i
+.PHONY : src/base/EventLoop.i
 
 # target to preprocess a source file
-EventLoopthread.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthread.cpp.i
-.PHONY : EventLoopthread.cpp.i
+src/base/EventLoop.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoop.cpp.i
+.PHONY : src/base/EventLoop.cpp.i
 
-EventLoopthread.s: EventLoopthread.cpp.s
+src/base/EventLoop.s: src/base/EventLoop.cpp.s
 
-.PHONY : EventLoopthread.s
+.PHONY : src/base/EventLoop.s
 
 # target to generate assembly for a file
-EventLoopthread.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthread.cpp.s
-.PHONY : EventLoopthread.cpp.s
+src/base/EventLoop.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoop.cpp.s
+.PHONY : src/base/EventLoop.cpp.s
 
-EventLoopthreadPool.o: EventLoopthreadPool.cpp.o
+src/base/EventLoopthread.o: src/base/EventLoopthread.cpp.o
 
-.PHONY : EventLoopthreadPool.o
+.PHONY : src/base/EventLoopthread.o
 
 # target to build an object file
-EventLoopthreadPool.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.o
-.PHONY : EventLoopthreadPool.cpp.o
+src/base/EventLoopthread.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoopthread.cpp.o
+.PHONY : src/base/EventLoopthread.cpp.o
 
-EventLoopthreadPool.i: EventLoopthreadPool.cpp.i
+src/base/EventLoopthread.i: src/base/EventLoopthread.cpp.i
 
-.PHONY : EventLoopthreadPool.i
+.PHONY : src/base/EventLoopthread.i
 
 # target to preprocess a source file
-EventLoopthreadPool.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.i
-.PHONY : EventLoopthreadPool.cpp.i
+src/base/EventLoopthread.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoopthread.cpp.i
+.PHONY : src/base/EventLoopthread.cpp.i
 
-EventLoopthreadPool.s: EventLoopthreadPool.cpp.s
+src/base/EventLoopthread.s: src/base/EventLoopthread.cpp.s
 
-.PHONY : EventLoopthreadPool.s
+.PHONY : src/base/EventLoopthread.s
 
 # target to generate assembly for a file
-EventLoopthreadPool.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/EventLoopthreadPool.cpp.s
-.PHONY : EventLoopthreadPool.cpp.s
+src/base/EventLoopthread.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoopthread.cpp.s
+.PHONY : src/base/EventLoopthread.cpp.s
 
-InetAddr.o: InetAddr.cpp.o
+src/base/EventLoopthreadPool.o: src/base/EventLoopthreadPool.cpp.o
 
-.PHONY : InetAddr.o
+.PHONY : src/base/EventLoopthreadPool.o
 
 # target to build an object file
-InetAddr.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/InetAddr.cpp.o
-.PHONY : InetAddr.cpp.o
+src/base/EventLoopthreadPool.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoopthreadPool.cpp.o
+.PHONY : src/base/EventLoopthreadPool.cpp.o
 
-InetAddr.i: InetAddr.cpp.i
+src/base/EventLoopthreadPool.i: src/base/EventLoopthreadPool.cpp.i
 
-.PHONY : InetAddr.i
+.PHONY : src/base/EventLoopthreadPool.i
 
 # target to preprocess a source file
-InetAddr.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/InetAddr.cpp.i
-.PHONY : InetAddr.cpp.i
+src/base/EventLoopthreadPool.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoopthreadPool.cpp.i
+.PHONY : src/base/EventLoopthreadPool.cpp.i
 
-InetAddr.s: InetAddr.cpp.s
+src/base/EventLoopthreadPool.s: src/base/EventLoopthreadPool.cpp.s
 
-.PHONY : InetAddr.s
+.PHONY : src/base/EventLoopthreadPool.s
 
 # target to generate assembly for a file
-InetAddr.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/InetAddr.cpp.s
-.PHONY : InetAddr.cpp.s
+src/base/EventLoopthreadPool.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/EventLoopthreadPool.cpp.s
+.PHONY : src/base/EventLoopthreadPool.cpp.s
 
-Kqueue.o: Kqueue.cpp.o
+src/base/InetAddr.o: src/base/InetAddr.cpp.o
 
-.PHONY : Kqueue.o
+.PHONY : src/base/InetAddr.o
 
 # target to build an object file
-Kqueue.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Kqueue.cpp.o
-.PHONY : Kqueue.cpp.o
+src/base/InetAddr.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/InetAddr.cpp.o
+.PHONY : src/base/InetAddr.cpp.o
 
-Kqueue.i: Kqueue.cpp.i
+src/base/InetAddr.i: src/base/InetAddr.cpp.i
 
-.PHONY : Kqueue.i
+.PHONY : src/base/InetAddr.i
 
 # target to preprocess a source file
-Kqueue.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Kqueue.cpp.i
-.PHONY : Kqueue.cpp.i
+src/base/InetAddr.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/InetAddr.cpp.i
+.PHONY : src/base/InetAddr.cpp.i
 
-Kqueue.s: Kqueue.cpp.s
+src/base/InetAddr.s: src/base/InetAddr.cpp.s
 
-.PHONY : Kqueue.s
+.PHONY : src/base/InetAddr.s
 
 # target to generate assembly for a file
-Kqueue.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/Kqueue.cpp.s
-.PHONY : Kqueue.cpp.s
+src/base/InetAddr.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/InetAddr.cpp.s
+.PHONY : src/base/InetAddr.cpp.s
 
-SocketOpt.o: SocketOpt.cpp.o
+src/base/Kqueue.o: src/base/Kqueue.cpp.o
 
-.PHONY : SocketOpt.o
+.PHONY : src/base/Kqueue.o
 
 # target to build an object file
-SocketOpt.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SocketOpt.cpp.o
-.PHONY : SocketOpt.cpp.o
+src/base/Kqueue.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Kqueue.cpp.o
+.PHONY : src/base/Kqueue.cpp.o
 
-SocketOpt.i: SocketOpt.cpp.i
+src/base/Kqueue.i: src/base/Kqueue.cpp.i
 
-.PHONY : SocketOpt.i
+.PHONY : src/base/Kqueue.i
 
 # target to preprocess a source file
-SocketOpt.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SocketOpt.cpp.i
-.PHONY : SocketOpt.cpp.i
+src/base/Kqueue.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Kqueue.cpp.i
+.PHONY : src/base/Kqueue.cpp.i
 
-SocketOpt.s: SocketOpt.cpp.s
+src/base/Kqueue.s: src/base/Kqueue.cpp.s
 
-.PHONY : SocketOpt.s
+.PHONY : src/base/Kqueue.s
 
 # target to generate assembly for a file
-SocketOpt.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/SocketOpt.cpp.s
-.PHONY : SocketOpt.cpp.s
+src/base/Kqueue.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/Kqueue.cpp.s
+.PHONY : src/base/Kqueue.cpp.s
 
-TcpConnection.o: TcpConnection.cpp.o
+src/base/SocketOpt.o: src/base/SocketOpt.cpp.o
 
-.PHONY : TcpConnection.o
+.PHONY : src/base/SocketOpt.o
 
 # target to build an object file
-TcpConnection.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/TcpConnection.cpp.o
-.PHONY : TcpConnection.cpp.o
+src/base/SocketOpt.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/SocketOpt.cpp.o
+.PHONY : src/base/SocketOpt.cpp.o
 
-TcpConnection.i: TcpConnection.cpp.i
+src/base/SocketOpt.i: src/base/SocketOpt.cpp.i
 
-.PHONY : TcpConnection.i
+.PHONY : src/base/SocketOpt.i
 
 # target to preprocess a source file
-TcpConnection.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/TcpConnection.cpp.i
-.PHONY : TcpConnection.cpp.i
+src/base/SocketOpt.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/SocketOpt.cpp.i
+.PHONY : src/base/SocketOpt.cpp.i
 
-TcpConnection.s: TcpConnection.cpp.s
+src/base/SocketOpt.s: src/base/SocketOpt.cpp.s
 
-.PHONY : TcpConnection.s
+.PHONY : src/base/SocketOpt.s
 
 # target to generate assembly for a file
-TcpConnection.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/TcpConnection.cpp.s
-.PHONY : TcpConnection.cpp.s
+src/base/SocketOpt.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/base/SocketOpt.cpp.s
+.PHONY : src/base/SocketOpt.cpp.s
 
-TcpServer.o: TcpServer.cpp.o
+src/http/WebServer.o: src/http/WebServer.cpp.o
 
-.PHONY : TcpServer.o
+.PHONY : src/http/WebServer.o
 
 # target to build an object file
-TcpServer.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/TcpServer.cpp.o
-.PHONY : TcpServer.cpp.o
+src/http/WebServer.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/http/WebServer.cpp.o
+.PHONY : src/http/WebServer.cpp.o
 
-TcpServer.i: TcpServer.cpp.i
+src/http/WebServer.i: src/http/WebServer.cpp.i
 
-.PHONY : TcpServer.i
+.PHONY : src/http/WebServer.i
 
 # target to preprocess a source file
-TcpServer.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/TcpServer.cpp.i
-.PHONY : TcpServer.cpp.i
+src/http/WebServer.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/http/WebServer.cpp.i
+.PHONY : src/http/WebServer.cpp.i
 
-TcpServer.s: TcpServer.cpp.s
+src/http/WebServer.s: src/http/WebServer.cpp.s
 
-.PHONY : TcpServer.s
+.PHONY : src/http/WebServer.s
 
 # target to generate assembly for a file
-TcpServer.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/TcpServer.cpp.s
-.PHONY : TcpServer.cpp.s
+src/http/WebServer.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/http/WebServer.cpp.s
+.PHONY : src/http/WebServer.cpp.s
 
-WebServer.o: WebServer.cpp.o
+src/main.o: src/main.cpp.o
 
-.PHONY : WebServer.o
+.PHONY : src/main.o
 
 # target to build an object file
-WebServer.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/WebServer.cpp.o
-.PHONY : WebServer.cpp.o
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-WebServer.i: WebServer.cpp.i
+src/main.i: src/main.cpp.i
 
-.PHONY : WebServer.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-WebServer.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/WebServer.cpp.i
-.PHONY : WebServer.cpp.i
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-WebServer.s: WebServer.cpp.s
+src/main.s: src/main.cpp.s
 
-.PHONY : WebServer.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-WebServer.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/WebServer.cpp.s
-.PHONY : WebServer.cpp.s
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-main.o: main.cpp.o
+src/net/TcpConnection.o: src/net/TcpConnection.cpp.o
 
-.PHONY : main.o
+.PHONY : src/net/TcpConnection.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/net/TcpConnection.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/net/TcpConnection.cpp.o
+.PHONY : src/net/TcpConnection.cpp.o
 
-main.i: main.cpp.i
+src/net/TcpConnection.i: src/net/TcpConnection.cpp.i
 
-.PHONY : main.i
+.PHONY : src/net/TcpConnection.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/net/TcpConnection.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/net/TcpConnection.cpp.i
+.PHONY : src/net/TcpConnection.cpp.i
 
-main.s: main.cpp.s
+src/net/TcpConnection.s: src/net/TcpConnection.cpp.s
 
-.PHONY : main.s
+.PHONY : src/net/TcpConnection.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/untitled.dir/build.make CMakeFiles/untitled.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/net/TcpConnection.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/net/TcpConnection.cpp.s
+.PHONY : src/net/TcpConnection.cpp.s
+
+src/net/TcpServer.o: src/net/TcpServer.cpp.o
+
+.PHONY : src/net/TcpServer.o
+
+# target to build an object file
+src/net/TcpServer.cpp.o:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/net/TcpServer.cpp.o
+.PHONY : src/net/TcpServer.cpp.o
+
+src/net/TcpServer.i: src/net/TcpServer.cpp.i
+
+.PHONY : src/net/TcpServer.i
+
+# target to preprocess a source file
+src/net/TcpServer.cpp.i:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/net/TcpServer.cpp.i
+.PHONY : src/net/TcpServer.cpp.i
+
+src/net/TcpServer.s: src/net/TcpServer.cpp.s
+
+.PHONY : src/net/TcpServer.s
+
+# target to generate assembly for a file
+src/net/TcpServer.cpp.s:
+	$(MAKE) -f CMakeFiles/webserver.dir/build.make CMakeFiles/webserver.dir/src/net/TcpServer.cpp.s
+.PHONY : src/net/TcpServer.cpp.s
 
 # Help Target
 help:
@@ -482,46 +482,46 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... untitled"
-	@echo "... Acceptor.o"
-	@echo "... Acceptor.i"
-	@echo "... Acceptor.s"
-	@echo "... Buffer.o"
-	@echo "... Buffer.i"
-	@echo "... Buffer.s"
-	@echo "... Channel.o"
-	@echo "... Channel.i"
-	@echo "... Channel.s"
-	@echo "... EventLoop.o"
-	@echo "... EventLoop.i"
-	@echo "... EventLoop.s"
-	@echo "... EventLoopthread.o"
-	@echo "... EventLoopthread.i"
-	@echo "... EventLoopthread.s"
-	@echo "... EventLoopthreadPool.o"
-	@echo "... EventLoopthreadPool.i"
-	@echo "... EventLoopthreadPool.s"
-	@echo "... InetAddr.o"
-	@echo "... InetAddr.i"
-	@echo "... InetAddr.s"
-	@echo "... Kqueue.o"
-	@echo "... Kqueue.i"
-	@echo "... Kqueue.s"
-	@echo "... SocketOpt.o"
-	@echo "... SocketOpt.i"
-	@echo "... SocketOpt.s"
-	@echo "... TcpConnection.o"
-	@echo "... TcpConnection.i"
-	@echo "... TcpConnection.s"
-	@echo "... TcpServer.o"
-	@echo "... TcpServer.i"
-	@echo "... TcpServer.s"
-	@echo "... WebServer.o"
-	@echo "... WebServer.i"
-	@echo "... WebServer.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... webserver"
+	@echo "... src/base/Acceptor.o"
+	@echo "... src/base/Acceptor.i"
+	@echo "... src/base/Acceptor.s"
+	@echo "... src/base/Buffer.o"
+	@echo "... src/base/Buffer.i"
+	@echo "... src/base/Buffer.s"
+	@echo "... src/base/Channel.o"
+	@echo "... src/base/Channel.i"
+	@echo "... src/base/Channel.s"
+	@echo "... src/base/EventLoop.o"
+	@echo "... src/base/EventLoop.i"
+	@echo "... src/base/EventLoop.s"
+	@echo "... src/base/EventLoopthread.o"
+	@echo "... src/base/EventLoopthread.i"
+	@echo "... src/base/EventLoopthread.s"
+	@echo "... src/base/EventLoopthreadPool.o"
+	@echo "... src/base/EventLoopthreadPool.i"
+	@echo "... src/base/EventLoopthreadPool.s"
+	@echo "... src/base/InetAddr.o"
+	@echo "... src/base/InetAddr.i"
+	@echo "... src/base/InetAddr.s"
+	@echo "... src/base/Kqueue.o"
+	@echo "... src/base/Kqueue.i"
+	@echo "... src/base/Kqueue.s"
+	@echo "... src/base/SocketOpt.o"
+	@echo "... src/base/SocketOpt.i"
+	@echo "... src/base/SocketOpt.s"
+	@echo "... src/http/WebServer.o"
+	@echo "... src/http/WebServer.i"
+	@echo "... src/http/WebServer.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/net/TcpConnection.o"
+	@echo "... src/net/TcpConnection.i"
+	@echo "... src/net/TcpConnection.s"
+	@echo "... src/net/TcpServer.o"
+	@echo "... src/net/TcpServer.i"
+	@echo "... src/net/TcpServer.s"
 .PHONY : help
 
 

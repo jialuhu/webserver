@@ -3,4 +3,16 @@ project(TinyWebServer)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled main.cpp EventLoop.cpp Channel.cpp Kqueue.h Kqueue.cpp WebServer.h SocketOpt.cpp SocketOpt.h InetAddr.h Socket.h Acceptor.h InetAddr.cpp Acceptor.cpp TcpServer.h TcpServer.cpp WebServer.cpp TcpConnection.h TcpConnection.cpp CallBack.h Buffer.h Buffer.cpp HttpContent.h HttpRespond.h EventLoopthread.h EventLoopthread.cpp  EventLoopthreadPool.h EventLoopthreadPool.cpp)
+aux_source_directory(src/base SOURCE_BASE)
+aux_source_directory(src/net SOURCE_NET)
+aux_source_directory(src/config SOURCE_CONFIG)
+aux_source_directory(src/http SOURCE_HTTP)
+aux_source_directory(src/cgi SOURCE_CGI)
+
+add_executable(webserver
+        src/main.cpp
+        ${SOURCE_BASE}
+        ${SOURCE_CONFIG}
+        ${SOURCE_NET}
+        ${SOURCE_HTTP}
+        )

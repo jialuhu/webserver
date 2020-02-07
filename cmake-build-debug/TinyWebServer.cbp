@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TinyWebServer"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="webserver">
+				<Option output="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/webserver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/../../../../../../include/c++/8.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/../../../../../../include/c++/8.3.0/x86_64-apple-darwin16.7.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/../../../../../../include/c++/8.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 webserver"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="webserver/fast">
+				<Option output="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/webserver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/jialuhu/CLionProjects/webserver/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/../../../../../../include/c++/8.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/../../../../../../include/c++/8.3.0/x86_64-apple-darwin16.7.0"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/../../../../../../include/c++/8.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc/8.3.0/lib/gcc/8/gcc/x86_64-apple-darwin16.7.0/8.3.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 webserver/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/jialuhu/CLionProjects/webserver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Acceptor.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Acceptor.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Buffer.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Buffer.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Channel.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Channel.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/EventLoop.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/EventLoop.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/EventLoopthread.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/EventLoopthread.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/EventLoopthreadPool.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/EventLoopthreadPool.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/InetAddr.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/InetAddr.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Kqueue.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/Kqueue.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/SocketOpt.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/base/SocketOpt.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/http/WebServer.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/http/WebServer.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/main.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/net/TcpConnection.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/net/TcpConnection.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/net/TcpServer.cpp">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/src/net/TcpServer.h">
+			<Option target="webserver"/>
+		</Unit>
+		<Unit filename="/Users/jialuhu/CLionProjects/webserver/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
