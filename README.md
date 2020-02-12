@@ -67,9 +67,11 @@ MacOS 10.12.6
 ```
 git https://github.com/jialuhu/webserver.git
 ```
-
+运行前请安装cmake
 ```
-cd cmake-build-debug
+mkdir build
+cd build
+cmake ..
 make
 ./webserver
 ```
