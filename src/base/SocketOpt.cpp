@@ -10,8 +10,6 @@ int SocketOpt ::socket() {
 }
 
 void SocketOpt::bind(int sockfd, struct sockaddr_in *addr) {
-    //std::cout << sockfd << " " << addr->sin_port<<std::endl;
-    //td::cout << sockfd << " " << addr->sin_addr.s_addr<<std::endl;
 
     int ret = ::bind(sockfd,(struct sockaddr*)addr, sizeof(struct sockaddr_in));
     assert(ret >= 0);
@@ -26,6 +24,7 @@ int SocketOpt::accept(int sockfd) {
     struct sockaddr_in addr;
     socklen_t len = sizeof(addr);
     int connfd = ::accept(sockfd,(struct sockaddr*)&addr, &len);
+    assert(connfd>0);
     return connfd;
 }
 

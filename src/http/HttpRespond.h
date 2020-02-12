@@ -21,22 +21,9 @@ public:
       void set_version(std::string version){
         version_ = version;
     }
-
-    /*void set_Respond_Header(std::string head){
-        Respond_Header_ = head;
-    }*/
-
-    /*void set_ContentLength(std::string length){
-        ContentLength_ = length;
-    }*/
     void set_ContentLanguage(std::string language){
         ContentLanguage_ = language;
     }
-
-    /*void set_ContentType(std::string type){
-        ContentType_ = type;
-    }*/
-
     void set_Connection(std::string Connction){
         Connection_ = Connction;
     }
@@ -93,7 +80,7 @@ public:
                 sprintf(buf,"Content-Length: %d\r\n\r\n",tbuf.st_size);
                 buf[strlen(buf)]='\0';
                 header = header+buf;
-                conn->set_Handlewrite(method_.c_str(),fd,header);
+                conn->set_Handlewrite(fd,header);
             }
             close(fd);
     }

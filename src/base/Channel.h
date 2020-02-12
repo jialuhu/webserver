@@ -85,6 +85,9 @@ public:
     bool is_write(){
         return iswrite;
     }
+    bool isWriting() {
+        return event_ == EVFILT_WRITE;
+    }
     int fd(){
         return  fd_;
     }

@@ -59,7 +59,6 @@ void HttpContent::setConfig(std::string SP, std::string CGIP, std::string DOCP,b
     httprespond_.set_Document(DOCP);
 }
 void HttpContent::doit(const TcpConnectionPtr &conn, Buffer &buffer){
-    std::cout << "HTTP包: " << buffer.c_str() << std::endl;
     RESULT_ = analyse(conn,buffer);
     switch (RESULT_){
         case BAD_REQUESTION:{
@@ -76,6 +75,7 @@ void HttpContent::doit(const TcpConnectionPtr &conn, Buffer &buffer){
             buffer.Buffer_str(post);
             std::string p;
             httprespond_.FillRespond_POST(conn);
+            break;
         }
     }
 
@@ -156,6 +156,7 @@ HttpContent::HTTP_CODE HttpContent::analyse(const TcpConnectionPtr &conn, Buffer
             }
             default:{
                 flags = false;
+                break;
             }
         }
         content.clear();

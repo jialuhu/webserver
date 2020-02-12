@@ -79,7 +79,7 @@ void Kqueue::updateChannel(Channel* channel) {
         assert(Change(channel,kfd)==true);
     }
 }
-const int MAX_EVENT_COUNT = 5000;
+const int MAX_EVENT_COUNT = 50000;
 void Kqueue::kqueue(int timeout, std::vector<Channel*> *activeChannel){
     for(auto it=channels_.begin();it!=channels_.end();it++){
         int id = it->first;

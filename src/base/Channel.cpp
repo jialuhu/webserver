@@ -39,7 +39,7 @@ void Channel :: handleEvent() {
             WriteCallback();
         }
     }
-    if((flags_ == 32769) && (is_close())){
+    if(is_close()){
         if(CloseCallback){
             CloseCallback();
         }
