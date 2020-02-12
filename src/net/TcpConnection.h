@@ -26,6 +26,7 @@ public:
         CONNECTING,
         CONNCTED,
         CLOSED,
+        CLOSING,
     };
     TcpConnection(EventLoop* loop, std::string cooname,int connfd, InetAddr &local);
     ~TcpConnection();
@@ -56,10 +57,12 @@ public:
     //进行用户的回调
     void connectEstablished();
     void Post_deal(const char* file_path, const char *argv);
-    void set_Handlewrite(const char* filepath,int fd, std::string &head);
+    void set_Handlewrite(int fd, std::string &head);
     void set_HandleErrno(int fd, std::string &head);
     void connDestroyed();
     EventLoop* getLoop() const { return loop_; }
+
+
 private:
     typedef boost::function<void (TcpConnection &)> ConnectionCallbacks;
     void HandleRead();

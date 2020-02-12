@@ -19,6 +19,7 @@ TcpConnection::TcpConnection(EventLoop *loop,
     channel_->setCloseCallback([this]{this->HandleClose();});
 }
 TcpConnection::~TcpConnection() {
+
 }
 void TcpConnection::connectEstablished() {
     assert(conn_state==CONNECTING);
@@ -34,7 +35,10 @@ void TcpConnection::HandleRead(){
     int saveErrno = 0;
     int bytes = input_.readFd(channel_->fd(),saveErrno);
     if(bytes>0){
-        onMessageCb_(shared_from_this(),input_);
+        if(onMessageCb_){
+            loop_->runInLoop(std::bind(onMessageCb_, shared_from_this(),input_));
+        }
+        //onMessageCb_(shared_from_this(),input_);
     }
     else{
         HandleClose();
@@ -71,7 +75,8 @@ void TcpConnection::Post_deal(const char* file_path, const char *argv){
     }
     wait(nullptr);
 }
-void TcpConnection::set_Handlewrite(const char* filepath, int fd,std::string &head) {
+
+void TcpConnection::set_Handlewrite(int fd,std::string &head) {
     write(channel_->fd(),head.c_str(),head.size());
     int save;
     int sum = 0;
@@ -86,14 +91,19 @@ void TcpConnection::set_Handlewrite(const char* filepath, int fd,std::string &he
 
 void TcpConnection::HandleWrite(){
     int ret;
-    ret = ::write(channel_->fd(), output_.peek(), output_.readable());
-    if(ret == -1){
-        HandleErrno();
+    if(channel_->isWriting()){
+        ret = ::write(channel_->fd(), output_.peek(), output_.readable());
+        if(ret < 0){
+            HandleErrno();
+        }
+        if(ret == output_.readable()){
+            output_.retrieve(ret);
+            channel_->disableWriting();
+            HandleClose();
+        }
+        output_.retrieve(ret);
     }
-    //若数据发送完毕，应关闭可发送事件
-    if(ret == output_.readable()){
-        channel_->disableWriting();
-    }
-    output_.update(ret);
 
 }
+
+
