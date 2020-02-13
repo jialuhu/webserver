@@ -61,15 +61,10 @@ public:
     void set_HandleErrno(int fd, std::string &head);
     void connDestroyed();
     EventLoop* getLoop() const { return loop_; }
-    void send(const void *v, size_t len);
-    void send(const std::string& s);
-    void send(const char *s);
-    void sendInNotIoThread(const std::string& data);
-    void send(const char *s, size_t len);
 
 
 private:
-    void sendInLoop(const char *data, size_t len);
+
     typedef boost::function<void (TcpConnection &)> ConnectionCallbacks;
     void HandleRead();
     void HandleWrite();
