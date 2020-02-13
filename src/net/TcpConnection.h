@@ -60,6 +60,7 @@ public:
     void set_Handlewrite(int fd, std::string &head);
     void set_HandleErrno(int fd, std::string &head);
     void connDestroyed();
+
     EventLoop* getLoop() const { return loop_; }
 
 
