@@ -98,7 +98,6 @@ void HttpContent::ParseRequestion() {
         type_content = content.substr(find+1, content.size()-3);
         httprespond_.set_Connection(type_content);
     } else{
-        std::cout << type << std::endl;
     }
 
 }

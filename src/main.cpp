@@ -13,8 +13,9 @@ int main(){
             GetConfig_.Return_DocumentPath(),
             GetConfig_.Return_CGI()
     );
-    server.setThread(0);
     server.start();
     loop.loop();
     return 0;
 }
+
+

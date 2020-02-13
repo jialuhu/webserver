@@ -38,7 +38,6 @@ void TcpConnection::HandleRead(){
         if(onMessageCb_){
             loop_->runInLoop(std::bind(onMessageCb_, shared_from_this(),input_));
         }
-        //onMessageCb_(shared_from_this(),input_);
     }
     else{
         HandleClose();
@@ -97,13 +96,13 @@ void TcpConnection::HandleWrite(){
             HandleErrno();
         }
         if(ret == output_.readable()){
-            output_.retrieve(ret);
+            output_.update(ret);
             channel_->disableWriting();
             HandleClose();
         }
-        output_.retrieve(ret);
+        else{
+            output_.update(ret);
+        }
     }
 
 }
-
-

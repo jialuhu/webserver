@@ -19,7 +19,7 @@ TcpServer::~TcpServer() {
 
 }
 
-void TcpServer::setThreadNumber(int threadnumber)  {
+void TcpServer::setThreadNumber(size_t threadnumber)  {
     ioThreadPool_->SetThreadNumber(threadnumber);
 }
 
@@ -80,7 +80,7 @@ void TcpServer::removeConnection(const TcpConnectionPtr &conn){
     assert(n==1);
 }
 
-void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
+/*void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
     loop_->assertInLoopThread();
     auto e = connections_.find(conn->name());
     if(e==connections_.end()){
@@ -90,4 +90,4 @@ void TcpServer::removeConnInLoop(const TcpConnectionPtr &conn) {
     }
     EventLoop *io = conn->getLoop();
     io->queueInLoop(std::bind(&TcpConnection::connDestroyed,conn));
-}
+}*/

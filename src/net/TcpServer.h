@@ -31,10 +31,9 @@ public:
     void setCloseCb(CloseCallback cb){
         CloseCb_ = std::move(cb);
     }
-    void setThreadNumber(int threadnumber);
+    void setThreadNumber(size_t threadnumber);
     EventLoop* getNextLoop();
     void removeConnection(const TcpConnectionPtr &conn);
-    void removeConnInLoop(const TcpConnectionPtr &conn);
 private:
     EventLoopthreadPool* ioThreadPool_;
     EventLoop *loop_;
