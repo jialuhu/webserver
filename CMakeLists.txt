@@ -8,7 +8,6 @@ aux_source_directory(src/net SOURCE_NET)
 aux_source_directory(src/config SOURCE_CONFIG)
 aux_source_directory(src/http SOURCE_HTTP)
 aux_source_directory(src/cgi SOURCE_CGI)
-#target_link_libraries(webserver Threads::Threads)
 add_executable(webserver
         src/main.cpp
         ${SOURCE_BASE}
@@ -16,4 +15,3 @@ add_executable(webserver
         ${SOURCE_NET}
         ${SOURCE_HTTP}
         )
-#add_executable(add ${SOURCE_CGI})
