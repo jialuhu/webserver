@@ -13,6 +13,7 @@ class EventLoopthread{
 public:
     EventLoopthread();
     ~EventLoopthread();
+    void start();
     EventLoop* GetStartLoop();
 private:
     void threadFunc();

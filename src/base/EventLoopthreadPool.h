@@ -7,28 +7,28 @@
 
 #include "EventLoopthread.h"
 #include <vector>
+#include <iostream>
 class EventLoopthreadPool{
 public:
     EventLoopthreadPool():ThreadNumber_(0),
-            NextIndex_(0),
-            IothreadPool_(),
-            EventIOLoops_(){
+            NextIndex_(0){
+        std::cout << "EventLoopthreadpool is created.";
 
     }
     ~EventLoopthreadPool(){
 
     }
     EventLoop* GetioLoop();
-    void SetThreadNumber(int thread_number);
-    int GetThreadNumber(){
+    void SetThreadNumber(size_t thread_number);
+    size_t GetThreadNumber(){
         return ThreadNumber_;
     }
     void start();
 
 private:
-    int ThreadNumber_;
+    size_t ThreadNumber_;
     int NextIndex_;
-    std::vector<EventLoopthread*> IothreadPool_;
+    std::vector<std::unique_ptr<EventLoopthread>> IothreadPool_;
     std::vector<EventLoop*> EventIOLoops_;
 };
 #endif //UNTITLED_EVENTLOOPTHREADPOOL_H

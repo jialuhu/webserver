@@ -3,11 +3,12 @@
 //
 #include "EventLoopthread.h"
 #include "EventLoop.h"
-EventLoopthread::EventLoopthread():
-        loop_(nullptr),
-        thread_([this]{this->threadFunc();})
+EventLoopthread::EventLoopthread():loop_(nullptr)
 {
-    //进行线程分离，保证该线程不被其他线程回收资源
+}
+
+void EventLoopthread::start(){
+    thread_ = std::move(std::thread([this]{this->threadFunc();}));
     thread_.detach();
 }
 
@@ -34,3 +35,4 @@ void EventLoopthread ::threadFunc() {
     }
     thread_loop.loop();
 }
+

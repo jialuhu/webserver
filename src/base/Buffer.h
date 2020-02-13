@@ -76,9 +76,14 @@ public:
         else
             _readindex = _writeindex = 0;
     }
-    //void retrieveAll() { update(readable()); }
     size_t readFd(int fd,int &save);
-
+    void retrieve(size_t len)
+    {
+        if (len < readable())
+            _readindex += len;
+        else
+            _readindex = _writeindex = 0;
+    }
     bool Buffer_find_str(const char *str,std::string &result,size_t len_){
         std::string find_string;
         Buffer_str(find_string);

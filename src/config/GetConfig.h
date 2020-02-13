@@ -119,7 +119,7 @@ public:
     const char* Return_ADDR(){
         return ADDR.c_str();
     }
-    int Return_ThreadN(){
+    size_t Return_ThreadN(){
         return ThreadN;
     }
     int Return_Listen(){
