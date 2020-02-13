@@ -25,8 +25,6 @@ public:
     enum State{
         CONNECTING,
         CONNCTED,
-        CLOSED,
-        CLOSING,
     };
     TcpConnection(EventLoop* loop, std::string cooname,int connfd, InetAddr &local);
     ~TcpConnection();
