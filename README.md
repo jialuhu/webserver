@@ -78,11 +78,11 @@ make
 ## <a name="4">四、性能测试
 使用siege进行压力测试，结果如下:
 ### 4.1 TinyWebServer
-![image](https://github.com/jialuhu/webserver/blob/master/doc/TinyWeb.png)
-![image](https://github.com/jialuhu/webserver/blob/master/doc/TinyWeb_50000_2.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/)
 
 ### 4.2 Apache
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Apache.png)
-![image](https://github.com/jialuhu/webserver/blob/master/doc/apache_50000_2.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/)
 
 
