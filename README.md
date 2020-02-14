@@ -85,10 +85,10 @@ siege -r 10000 -c 50 URL
 
 ### 4.1 测试结果
 #### 4.1.1 webserver
-![image](https://github.com/jialuhu/webserver/blob/master/doc/tinyweb.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Tinyweb.png)
 
 #### 4.1.2 Apache
-![image](https://github.com/jialuhu/webserver/blob/master/doc/apache.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Apache.png)
 
 ### 4.2 数据对比
 #### 4.2.1 运行时间（越短越好）
