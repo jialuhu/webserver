@@ -9,7 +9,7 @@
 通过muduo的启发，再反思之前写过的[TinyWebServer1.0](https://blog.csdn.net/qq_36573828/article/details/82784425),决定重构一版稳定性较高的TinyWebServer。
 
 ## <a name="2">二、简介
-TinyWebServer是一款支持静态网页、CGI文件、PDF文件、音频和视频传输的Web服务器。适用于学习或了解。
+TinyWebServer是一款支持静态网页、CGI文件、PDF文件、音频和视频传输的Web服务器。
 
 ## <a name="3">三、使用概述
 ### 3.1 功能概述
