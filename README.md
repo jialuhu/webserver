@@ -85,7 +85,7 @@ siege -r 10000 -c 50 URL
 
 ### 4.1 测试结果
 #### 4.1.1 webserver
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Tinyweb.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/tinyweb.png)
 
 #### 4.1.2 Apache
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Apache.png)
@@ -104,7 +104,7 @@ siege -r 10000 -c 50 URL
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Throughput.png)
 
 #### 4.2.5 并发性（越大越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Current.png)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Current.jpg)
 
 #### 4.2.6 数据传输量（越大越好）
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Data.png)
