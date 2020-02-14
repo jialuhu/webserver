@@ -104,7 +104,7 @@ siege -r 10000 -c 50 URL
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Throughput.png)
 
 #### 4.2.5 并发性（越大越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Current.jpg)
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Current.png)
 
 #### 4.2.6 数据传输量（越大越好）
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Data.png)
