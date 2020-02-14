@@ -76,15 +76,45 @@ make
 ./webserver
 ```
 ## <a name="4">四、性能测试
-使用siege进行压力测试，结果如下:
-### 4.1 TinyWebServer
-![image](https://github.com/jialuhu/webserver/blob/master/doc/)
-![image](https://github.com/jialuhu/webserver/blob/master/doc/)
+使用siege对webserver和Apache进行压力测试比较，测压命令统一如下:
 
-### 4.2 Apache
-![image](https://github.com/jialuhu/webserver/blob/master/doc/)
-![image](https://github.com/jialuhu/webserver/blob/master/doc/)
+```
+siege -r 10000 -c 50 URL
+//重复10000次，并发客户为50
+```
 
-## <a name="4">四、效果展示
+### 4.1 测试结果
+#### 4.1.1 webserver
+![image](https://github.com/jialuhu/webserver/blob/master/doc/tinyweb.png)
+
+#### 4.1.2 Apache
+![image](https://github.com/jialuhu/webserver/blob/master/doc/apache.png)
+
+### 4.2 数据对比
+#### 4.2.1 运行时间（越短越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Runtime.png)
+
+#### 4.2.2 响应时间（越短越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Respond.png)
+
+#### 4.2.3 事物处理速度（越快越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Transaction.png)
+
+#### 4.2.4 吞吐量（越大越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Throughput.png)
+
+#### 4.2.5 并发性（越大越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Current.png)
+
+#### 4.2.6 数据传输量（越大越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Data.png)
+
+#### 4.2.7 最长事物处理时间（越短越好）
+![image](https://github.com/jialuhu/webserver/blob/master/doc/Longesttime.png)
+
+
+
+
+## <a name="5">五、效果展示
 
 [点击此处进行访问](http://jialuhu.mynatapp.cc/index.html)
