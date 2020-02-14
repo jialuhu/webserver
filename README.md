@@ -6,26 +6,24 @@
 * <a href="#5">五、展示网址 </a>
 
 ## <a name="1">一、背景</a>
-通过muduo的启发，再反思之前写过的[TinyWebServer1.0](https://blog.csdn.net/qq_36573828/article/details/82784425),决定重构一版低泄漏、稳定性较高的TinyWebServer。
+通过muduo的启发，再反思之前写过的[TinyWebServer1.0](https://blog.csdn.net/qq_36573828/article/details/82784425),决定重构一版稳定性较高的TinyWebServer。
 
 ## <a name="2">二、简介
-TinyWebServer是一款支持静态网页、CGI文件、PDF文件、音频和视频传输的简易小型Web服务器。适用于学习或了解。
+TinyWebServer是一款支持静态网页、CGI文件、PDF文件、音频和视频传输的Web服务器。适用于学习或了解。
 
 ## <a name="3">三、使用概述
 ### 3.1 功能概述
-- 支持GET请求，即静态网页
-- 支持POST请求，即CGI文件执行
-- 支持PDF文件传输
+- 支持GET请求
+- 支持POST请求
 - 支持图片、语音、视频等大文件的传输
 
-### 3.2 技术概述
-- 使用kqueue多路复用技术
-- 使用了RAII封装，降低内存泄漏风险
-- 使用来Reactor模型进行事件的分发和管理
-- 使用了Oneloop per thread模型
-- 使用多线程
-- 使用来Round Robin分配线程
-- 各类分工明确功能专一
+### 3.2 特点
+- 控制了内存泄漏，使用了RAII思想对资源进行了管理。
+- 处理速度快，采用了多线程池异步I/O多路复用模式。
+- 稳定性高，各类功能划分清晰。
+- 文件发送快，利用读写缓冲区实现前后台分离模式异步发送。
+- 配置简单。
+- 使用简单。
 
 ### 3.3 使用说明
 #### 3.3.1 配置文件
