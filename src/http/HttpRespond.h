@@ -16,30 +16,30 @@ public:
     HttpRespond();
     ~HttpRespond();
     void set_url(std::string url){
-        url_ = url;
+        url_ = std::move(url);
     }
       void set_version(std::string version){
-        version_ = version;
+        version_ =  std::move(version);
     }
     void set_ContentLanguage(std::string language){
-        ContentLanguage_ = language;
+        ContentLanguage_ = std::move(language);
     }
     void set_Connection(std::string Connction){
-        Connection_ = Connction;
+        Connection_ = std::move(Connction);
     }
 
     void set_method(std::string method){
-        method_ = method;
+        method_ = std::move(method);
     }
 
 
     void set_postcontent(std::string st){
-        post_content = st;
+        post_content = std::move(st);
     }
 
 
     void set_Host_(std::string host){
-        Host_ = Host_;
+        Host_ = std::move(Host_);
     }
 
     void set_Document(std::string dp){
@@ -53,6 +53,12 @@ public:
     void FillRespond_POST(const TcpConnectionPtr &conn){
         if(B_CGI){
             method_ = CGIPath_ + method_;
+            int find = post_content.find("a=");
+            if(find == post_content.npos){
+                return;
+            }
+            post_content.substr(post_content.find("a="));
+            std::cout << "post_content:\n" << post_content << std::endl;
             conn->Post_deal(method_.c_str(), post_content.c_str());
         }else{
             FillRespond_GET(conn);

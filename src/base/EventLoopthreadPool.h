@@ -12,7 +12,7 @@ class EventLoopthreadPool{
 public:
     EventLoopthreadPool():ThreadNumber_(0),
             NextIndex_(0){
-        std::cout << "EventLoopthreadpool is created.";
+        //std::cout << "EventLoopthreadpool is created.";
 
     }
     ~EventLoopthreadPool(){

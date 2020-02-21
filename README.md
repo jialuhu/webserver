@@ -113,5 +113,5 @@ siege -r 10000 -c 50 URL
 
 
 ## <a name="5">五、效果展示
-
+若网页背景图显示不完整请刷新该页面。
 [点击此处进行访问](http://jialuhu.mynatapp.cc/index.html)

@@ -67,6 +67,7 @@ void TcpConnection::HandleErrno() {
 void TcpConnection::Post_deal(const char* file_path, const char *argv){
     file_path_=file_path;
     argv_=argv;
+    //std::cout << "arg:" << argv_ << std::endl;
     if(fork()==0)
     {
         dup2(channel_->fd(),STDOUT_FILENO);
