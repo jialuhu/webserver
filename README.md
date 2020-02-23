@@ -3,7 +3,8 @@
 * <a href="#2">二、简介 </a>
 * <a href="#3">三、使用概述 </a>
 * <a href="#4">四、性能测试 </a>
-* <a href="#5">五、展示网址 </a>
+* <a href="#5">五、泄漏检查 </a>
+* <a href="#6">六、展示网址 </a>
 
 ## <a name="1">一、背景</a>
 通过muduo的启发，再反思之前写过的[TinyWebServer1.0](https://blog.csdn.net/qq_36573828/article/details/82784425),决定重构一版稳定性较高的TinyWebServer。
@@ -81,7 +82,7 @@ siege -r 10000 -c 50 URL
 //重复10000次，并发客户为50
 ```
 
-### 4.1 测试结果
+### 4.1 性能测试结果
 #### 4.1.1 webserver
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/t.png)
 
@@ -110,8 +111,10 @@ siege -r 10000 -c 50 URL
 #### 4.2.7 最长事物处理时间（越短越好）
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Longesttime.png)
 
+## <a name="5">五、泄漏检查
+![image](https://github.com/jialuhu/webserver/blob/master/doc/leaks.png)
 
 
-## <a name="5">五、效果展示
+## <a name="6">六、效果展示
 若网页背景图显示不完整请刷新该页面。
 [点击此处进行访问](http://jialuhu.mynatapp.cc/index.html)
