@@ -114,6 +114,23 @@ siege -r 10000 -c 50 URL
 ## <a name="5">五、泄漏检查
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/leaks.png)
 
+若图片加载缓慢可参考如下数据:
+
+```
+Date/Time:       2020-02-23 14:37:16.128 +0800
+Launch Time:     2020-02-21 16:14:35.852 +0800
+OS Version:      Mac OS X 10.12.6 (16G2136)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 9.2 (9C40b)
+----
+leaks Report Version:  2.0
+Process 14347: 171 nodes malloced for 89 KB
+Process 14347: 0 leaks for 0 total leaked bytes.
+```
+从检测结果得出如下结论:
+- 进程14347:171个节点分配了89 KB的内存
+- 进程14347:0泄漏，总共泄漏0个字节。
 
 ## <a name="6">六、效果展示
 若网页背景图显示不完整请刷新该页面。
