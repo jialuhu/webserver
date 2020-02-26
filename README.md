@@ -84,32 +84,32 @@ siege -r 10000 -c 50 URL
 
 ### 4.1 性能测试结果
 #### 4.1.1 webserver
-![image](https://github.com/jialuhu/webserver/blob/master/doc/t.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/t.png)
 
 #### 4.1.2 Apache
-![image](https://github.com/jialuhu/webserver/blob/master/doc/a.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/a.png)
 
 ### 4.2 数据对比
 #### 4.2.1 运行时间（越短越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Runtime.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Runtime.png)
 
 #### 4.2.2 响应时间（越短越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Respond.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Respond.png)
 
 #### 4.2.3 事物处理速度（越快越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Transaction.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Transaction.png)
 
 #### 4.2.4 吞吐量（越大越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Throughput.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Throughput.png)
 
 #### 4.2.5 并发性（越大越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Current.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Current.png)
 
 #### 4.2.6 数据传输量（越大越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Data.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Data.png)
 
 #### 4.2.7 最长事物处理时间（越短越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Longesttime.png)
+![image](https://github.com/jialuhu/webserver/raw/master/doc/Longesttime.png)
 
 ## <a name="5">五、泄漏检查
 ![image](https://github.com/jialuhu/webserver/raw/master/doc/leaks.png)
