@@ -109,7 +109,7 @@ siege -r 10000 -c 50 URL
 ![image](https://github.com/jialuhu/webserver/blob/master/doc/Data.png)
 
 #### 4.2.7 最长事物处理时间（越短越好）
-![image](https://github.com/jialuhu/webserver/blob/master/doc/Longesttime.png)
+![image](/jialuhu/webserver/blob/master/doc/Longesttime.png)
 
 ## <a name="5">五、泄漏检查
 ![image](/jialuhu/webserver/raw/master/doc/leaks.png)
