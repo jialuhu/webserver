@@ -134,5 +134,4 @@ Process 14347: 0 leaks for 0 total leaked bytes.
 
 ## <a name="6">六、效果展示
 若网页背景图显示不完整请刷新该页面。
-NatAPP过期，暂时无法访问，预计2020.3.17日晚开放外网映射。
 [点击此处进行访问](http://jialuhu.mynatapp.cc/index.html)
