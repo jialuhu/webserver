@@ -135,3 +135,14 @@ Process 14347: 0 leaks for 0 total leaked bytes.
 ## <a name="6">六、效果展示
 若网页背景图显示不完整请刷新该页面。
 [点击此处进行访问](http://jialuhu.mynatapp.cc/index.html)
+### 效果展示截图
+下图为主页面:
+![image](https://github.com/jialuhu/webserver/raw/master/doc/result1.png)
+
+下图为音乐页面:
+![image](https://github.com/jialuhu/webserver/raw/master/doc/result2.png)
+
+下图为加法表单页面:
+![image](https://github.com/jialuhu/webserver/raw/master/doc/result3.png)
+
+
